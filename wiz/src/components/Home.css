@@ -119,13 +119,6 @@
     }
 }
 
-
-
-
-  
-  
-
-
 /* Services Section */
 .container.py-5 {
     padding-top: 60px;
@@ -141,6 +134,8 @@
     border: none;
     transition: transform 0.3s ease-in-out;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the cards */
+    border-radius: 8px;
+    overflow: hidden; /* Ensures content stays within card */
 }
 
 .card:hover {
