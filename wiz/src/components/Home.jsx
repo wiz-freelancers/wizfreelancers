@@ -12,18 +12,21 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <div className="hero-section">
-        <div className="container">
-          <div className="row align-items-center justify-content-center text-center">
-            <div className="col-lg-8">
-              <h1 className="hero-title animated-title">Welcome to Wiz Freelancers</h1>
-              <p className="hero-slogan">Freelance Brilliance, Wiz Style!</p>
-              <p className="hero-subtitle text-shadow">Crafting Digital Solutions with Creativity and Precision</p>
-              <Link to="/services" className="hero-btn btn btn-light shadow-lg hover-btn">Explore Our Services</Link>
-            </div>
-          </div>
-        </div>
-        <div className="shape-background"></div>
+  <div className="container">
+    <div className="row align-items-center justify-content-center text-center">
+      <div className="col-lg-8">
+        <h1 className="hero-title">Empowering Your Business with Digital Excellence</h1>
+        <p className="hero-slogan">Innovative Web Solutions Tailored to Your Needs</p>
+        <p className="hero-subtitle text-shadow">
+          At Wiz Freelancers, we help your business grow with custom Web Development, Web Design, & E-commerce Development.
+        </p>
+        <Link to="/services" className="hero-btn btn btn-primary shadow-lg hover-btn">Discover Our Solutions</Link>
       </div>
+    </div>
+  </div>
+  <div className="shape-background"></div>
+</div>
+
 
       {/* Services Section */}
       <div className="container py-5">
