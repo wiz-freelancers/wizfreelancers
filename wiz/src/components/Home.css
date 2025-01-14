@@ -1,19 +1,23 @@
 /* Hero Section */
 .hero-section {
     position: relative;
-    background-image: linear-gradient(135deg, #FF5F6D, #FFC371); /* Dynamic warm gradient */
-    background-size: cover; /* Full background coverage */
-    padding: 120px 0;
+    background-image: linear-gradient(135deg, #FF5F6D, #FFC371);
+    background-size: cover;
+    background-position: center center; /* Ensure the background is always centered */
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
     z-index: 1;
     overflow: hidden;
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4); /* Soft inner shadow */
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+    animation: gradientAnimation 10s ease infinite;
+    padding: 0 30px; /* Remove extra vertical padding */
+    margin: 0; /* Remove margin */
 }
 
 /* Add subtle animation on background */
@@ -29,26 +33,13 @@
     }
 }
 
-
-/* Shape Background 
-.shape-background {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 250px;
-    background-image: linear-gradient(180deg, #1C6DD0 20%, #1E4BB1 80%);
-    z-index: 1;
-    clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%); 
-}*/
-
-
-
+/* Hero Section Titles */
 .hero-title {
     font-size: 3rem;
     font-weight: bold;
     animation: fadeIn 1s ease-in-out;
-    margin-bottom: 20px; /* Add space below title */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added text-shadow for better visibility */
 }
 
 .hero-slogan {
@@ -62,14 +53,96 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Hero Section Button */
 .hero-btn {
     margin-top: 30px;
-    padding: 10px 25px;
-    font-size: 1.1rem;
+    padding: 12px 30px; /* Slightly larger padding for better clickability */
+    font-size: 1.2rem;
     border-radius: 30px;
     transition: all 0.3s ease-in-out;
-    margin-bottom: 30px; /* Add space below button */
+    background-color: #007bff; /* More noticeable background color */
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
 }
+
+.hero-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .hero-section {
+        padding: 0 20px; /* Less padding for tablets */
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-slogan {
+        font-size: 1.3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-btn {
+        padding: 10px 25px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 0 15px; /* Adjust padding for smaller mobile screens */
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-slogan {
+        font-size: 1.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-btn {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 0 10px; /* Minimal padding for very small screens */
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-slogan {
+        font-size: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .hero-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+}
+
 
 /* Services Section */
 .container.py-5 {
@@ -81,6 +154,7 @@
     margin-top: 30px; /* Ensure enough space at the top */
 }
 
+/* Card Styling */
 .card {
     border: none;
     transition: transform 0.3s ease-in-out;
@@ -111,7 +185,7 @@
     color: #555;
 }
 
-/* Call to Action */
+/* Call to Action Section */
 .container.py-5.text-center {
     background-color: #f7f7f7;
     padding-top: 60px;
@@ -142,6 +216,7 @@
     background-color: #0056b3;
 }
 
+/* Hover Button Effect */
 .hover-btn {
     transition: all 0.3s ease-in-out;
 }
@@ -149,168 +224,6 @@
 .hover-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Media Queries for Responsive Design */
-
-/* Tablet */
-@media (max-width: 1024px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .hero-slogan {
-        font-size: 1.3rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .hero-btn {
-        padding: 8px 20px;
-        font-size: 1rem;
-    }
-
-    .container.py-5 {
-        padding-top: 50px;
-        padding-bottom: 50px;
-    }
-
-    .card-img-top {
-        height: 180px;
-    }
-
-    .container.py-5.text-center h2 {
-        font-size: 2.2rem;
-    }
-
-    .btn-lg {
-        font-size: 1.1rem;
-        padding: 10px 25px;
-    }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 80px 0;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-slogan {
-        font-size: 1.2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .hero-btn {
-        padding: 8px 20px;
-        font-size: 1rem;
-    }
-
-    .container.py-5 {
-        padding-top: 40px;
-        padding-bottom: 40px;
-    }
-
-    .card-img-top {
-        height: 160px;
-    }
-
-    .container.py-5.text-center h2 {
-        font-size: 2rem;
-    }
-
-    .btn-lg {
-        font-size: 1rem;
-        padding: 10px 20px;
-    }
-}
-
-/* Small Mobile */
-@media (max-width: 576px) {
-    .hero-title {
-        font-size: 1.8rem;
-    }
-
-    .hero-slogan {
-        font-size: 1rem;
-    }
-
-    .hero-subtitle {
-        font-size: 0.9rem;
-    }
-
-    .hero-btn {
-        padding: 6px 15px;
-        font-size: 0.9rem;
-    }
-
-    .container.py-5 {
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
-
-    .card-img-top {
-        height: 150px;
-    }
-
-    .container.py-5.text-center h2 {
-        font-size: 1.8rem;
-    }
-
-    .btn-lg {
-        font-size: 0.9rem;
-        padding: 8px 20px;
-    }
-}
-
-/* Very Small Mobile */
-@media (max-width: 375px) {
-    .hero-section {
-        padding: 60px 0;
-    }
-
-    .hero-title {
-        font-size: 1.5rem;
-    }
-
-    .hero-slogan {
-        font-size: 1rem;
-    }
-
-    .hero-subtitle {
-        font-size: 0.9rem;
-    }
-
-    .hero-btn {
-        padding: 6px 15px;
-        font-size: 0.9rem;
-    }
-
-    .container.py-5 {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-
-    .card-img-top {
-        height: 130px;
-    }
-
-    .container.py-5.text-center h2 {
-        font-size: 1.6rem;
-    }
-
-    .btn-lg {
-        font-size: 0.9rem;
-        padding: 8px 15px;
-    }
 }
 
 /* Our Team Section */
@@ -397,6 +310,23 @@
 
 /* Tablet */
 @media (max-width: 1024px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-slogan {
+        font-size: 1.3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-btn {
+        padding: 8px 20px;
+        font-size: 1rem;
+    }
+
     .container.py-5 h2 {
         font-size: 2.2rem;
     }
@@ -416,17 +346,43 @@
 
 /* Mobile (Portrait) */
 @media (max-width: 768px) {
+    .hero-section {
+        padding: 80px 0;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-slogan {
+        font-size: 1.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-btn {
+        padding: 8px 20px;
+        font-size: 1rem;
+    }
+
+    .container.py-5 {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
     .container.py-5 h2 {
         font-size: 2rem;
     }
 
     .card {
-        max-width: 90%; /* Increase card width to 90% */
-        margin: 10px auto; /* Center the cards with auto margin */
+        max-width: 90%;
+        margin: 10px auto;
     }
 
     .card-img-top {
-        height: 180px; /* Adjust image height for mobile */
+        height: 180px;
     }
 
     .card-title {
@@ -450,11 +406,11 @@
     }
 
     .card {
-        max-width: 100%; /* Full width for mobile landscape */
+        max-width: 100%;
     }
 
     .card-img-top {
-        height: 150px; /* Adjust image height for mobile */
+        height: 150px;
     }
 
     .card-title {
@@ -468,31 +424,6 @@
     .card .btn-outline-primary, .card .btn-outline-danger {
         font-size: 0.85rem;
         padding: 6px 12px;
-    }
-}
-
-
-/* Mobile */
-@media (max-width: 768px) {
-    .container.py-5 {
-        padding-top: 40px;
-        padding-bottom: 40px;
-    }
-
-    .container.py-5 h2 {
-        font-size: 2rem;
-    }
-
-    .card-img-top {
-        height: 180px;
-    }
-
-    .card-title {
-        font-size: 1.3rem;
-    }
-
-    .card-text {
-        font-size: 0.9rem;
     }
 }
 
@@ -514,8 +445,7 @@
         font-size: 0.85rem;
     }
 
-    .card .btn-outline-primary,
-    .card .btn-outline-danger {
+    .card .btn-outline-primary, .card .btn-outline-danger {
         font-size: 0.9rem;
         padding: 6px 15px;
     }
@@ -523,12 +453,29 @@
 
 /* Very Small Mobile */
 @media (max-width: 375px) {
-    .container.py-5 h2 {
-        font-size: 1.6rem;
+    .hero-section {
+        padding: 60px 0;
     }
 
-    .card-img-top {
-        height: 130px;
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-slogan {
+        font-size: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .hero-btn {
+        padding: 6px 15px;
+        font-size: 0.9rem;
+    }
+
+    .container.py-5 h2 {
+        font-size: 1.6rem;
     }
 
     .card-title {
@@ -536,12 +483,6 @@
     }
 
     .card-text {
-        font-size: 0.8rem;
-    }
-
-    .card .btn-outline-primary,
-    .card .btn-outline-danger {
-        font-size: 0.8rem;
-        padding: 5px 12px;
+        font-size: 0.75rem;
     }
 }

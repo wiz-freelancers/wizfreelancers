@@ -8,15 +8,17 @@ const Nav = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
         {/* Logo */}
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand me-auto" to="/">
           <img 
             src={logo}  // Use the imported logo variable here
             alt="Wiz Freelancers Logo" 
             style={{ height: '40px' }} // Adjust the size as needed
           />
         </Link>
+        
+        {/* Hamburger Menu */}
         <button 
-          className="navbar-toggler" 
+          className="navbar-toggler ms-auto"  // Push the hamburger to the right
           type="button" 
           data-bs-toggle="collapse" 
           data-bs-target="#navbarNav" 
@@ -26,8 +28,10 @@ const Nav = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+        
+        {/* Navbar items */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto"> {/* Right-alignment for nav items */}
             <li className="nav-item">
               <Link className="nav-link" to="/">Home</Link>
             </li>
