@@ -15,7 +15,7 @@ const Home = () => {
   <div className="container">
     <div className="row align-items-center justify-content-center text-center">
       <div className="col-lg-12">
-        <h1 className="hero-title">Unlock Limitless Digital Possibilities</h1>
+        <h1 className="hero-title">WELCOME TO WIZ FREELANCERS</h1>
         <p className="hero-slogan">Redefining Web Excellence</p>
         <p className="hero-subtitle">From bold ideas to seamless execution, we turn visions into reality.</p>
         <Link to="/services" className="hero-btn btn btn-primary shadow-lg hover-btn">Discover Our Solutions</Link>

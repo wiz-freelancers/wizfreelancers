@@ -1,12 +1,11 @@
 /* Hero Section */
 .hero-section {
     position: relative;
-    background-image: linear-gradient(135deg, #1E2A47, #4E73DF);
-    background-size: cover;
-    background-position: center center;
+    background: linear-gradient(135deg, #3A4E8C, #7A9BF0); /* Dynamic gradient background */
+    background-size: 400% 400%; /* Large background for smooth animation */
     color: white;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Ensure vertical stacking of content */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -15,139 +14,114 @@
     z-index: 1;
     overflow: hidden;
     box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.3);
-    animation: gradientAnimation 15s ease infinite;
-    padding: 0 30px;
+    animation: gradientAnimation 20s ease infinite; /* Smooth gradient animation */
+    padding: 0 40px;
     margin: 0;
-  }
-  
-  @keyframes gradientAnimation {
-    0% { background-position: 0 0; }
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
     50% { background-position: 100% 100%; }
-    100% { background-position: 0 0; }
-  }
-  
-  .hero-title {
-    font-size: 3.5rem;
-    font-weight: bold;
-    animation: fadeIn 1.5s ease-in-out;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-    white-space: nowrap; /* Prevents text from breaking into multiple lines */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Adds ellipsis if text overflows */
-  }
-  
-  .hero-slogan {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-top: 10px;
-    font-style: italic;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.2rem;
-    margin-top: 15px;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-    font-weight: 300;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .hero-btn {
-    margin-top: 30px;
-    padding: 12px 30px;
-    font-size: 1.2rem;
-    border-radius: 30px;
-    transition: all 0.3s ease-in-out;
-    background-color: #0056b3;
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* Heading and Content */
+.hero-title {
+    font-size: 4.5rem; /* Large title size for impact */
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+    letter-spacing: 3px; /* Elegant letter spacing */
+    width: 100%;
+    display: block; /* Ensure the title is a single line */
+    margin-bottom: 30px; /* Space between title and button */
+}
+
+/* Button Styling */
+.hero-btn {
+    margin-top: 20px;
+    padding: 16px 40px;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    transition: all 0.4s ease-in-out;
+    background: linear-gradient(135deg, #FF5733, #FF6F61); /* Gradient button color */
     border: none;
     color: white;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .hero-btn:hover {
-    background-color: #00408d;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 1024px) {
+    letter-spacing: 1.5px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    display: inline-block;
+}
+
+.hero-btn:hover {
+    background: linear-gradient(135deg, #C13C27, #D14E3A); /* Hover effect with gradient */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+}
+
+.hero-btn:focus {
+    outline: none;
+}
+
+.hero-btn:active {
+    transform: translateY(1px); /* Active state effect */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
     .hero-section {
-      padding: 0 20px;
+        padding: 0 25px;
     }
-  
+
     .hero-title {
-      font-size: 2.8rem;
+        font-size: 3.5rem;
+        letter-spacing: 2px;
     }
-  
-    .hero-slogan {
-      font-size: 1.4rem;
-    }
-  
-    .hero-subtitle {
-      font-size: 1.1rem;
-    }
-  
+
     .hero-btn {
-      padding: 10px 25px;
-      font-size: 1.1rem;
+        padding: 14px 35px;
+        font-size: 1.2rem;
     }
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .hero-section {
-      padding: 0 15px;
+        padding: 0 20px;
     }
-  
+
     .hero-title {
-      font-size: 2.4rem;
+        font-size: 2.8rem;
+        letter-spacing: 1.5px;
     }
-  
-    .hero-slogan {
-      font-size: 1.3rem;
-    }
-  
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-  
+
     .hero-btn {
-      padding: 10px 25px;
-      font-size: 1rem;
+        padding: 12px 30px;
+        font-size: 1.1rem;
     }
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
     .hero-section {
-      padding: 0 10px;
+        padding: 0 15px;
     }
-  
+
     .hero-title {
-      font-size: 1.8rem;
+        font-size: 2.2rem;
+        letter-spacing: 1px;
     }
-  
-    .hero-slogan {
-      font-size: 1rem;
-    }
-  
-    .hero-subtitle {
-      font-size: 0.9rem;
-    }
-  
+
     .hero-btn {
-      padding: 8px 20px;
-      font-size: 0.9rem;
+        padding: 10px 25px;
+        font-size: 1rem;
     }
-  }
+}
+
+
+
+
   
   
 
