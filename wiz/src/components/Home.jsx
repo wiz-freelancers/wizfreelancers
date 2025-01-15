@@ -11,19 +11,18 @@ const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <div className="hero-section">
-  <div className="container">
-    <div className="row align-items-center justify-content-center text-center">
-      <div className="col-lg-12">
-        <h1 className="hero-title">WELCOME TO WIZ FREELANCERS</h1>
-        <p className="hero-slogan">Redefining Web Excellence</p>
-        <p className="hero-subtitle">From bold ideas to seamless execution, we turn visions into reality.</p>
-        <Link to="/services" className="hero-btn btn btn-primary shadow-lg hover-btn">Discover Our Solutions</Link>
-      </div>
-    </div>
-  </div>
-  <div className="shape-background"></div>
-</div>
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1 className="hero-title">WELCOME TO WIZ FREELANCERS</h1>
+          <p className="hero-slogan">Redefining Web Excellence</p>
+          <p className="hero-subtitle">From bold ideas to seamless execution, we turn visions into reality.</p>
+          <Link to="/services" className="hero-btn btn btn-primary shadow-lg hover-btn">Explore Our Services</Link>
+        </div>
+        <div className="hero-shapes">
+          <div className="hero-shape-1"></div>
+          <div className="hero-shape-2"></div>
+        </div>
+      </section>
 
 
 
