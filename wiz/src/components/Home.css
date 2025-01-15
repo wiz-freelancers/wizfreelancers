@@ -3,207 +3,190 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  /* Full Page Layout */
-  html, body {
+}
+
+*::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Full Page Layout */
+html, body {
     height: 100%;
     font-family: 'Arial', sans-serif;
     overflow-x: hidden;
-  }
-  
-  /* Hero Section */
-  .hero-section {
+}
+
+/* Hero Section */
+.hero-section {
     position: relative;
-    height: 100vh;  /* Ensures full viewport height */
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to right, #4b6cb7, #182848); /* Fallback gradient */
+    background-image: linear-gradient(to right, #4b6cb7, #182848); 
     color: #fff;
     overflow: hidden;
-  }
-  
-  .hero-wrapper {
+    padding: 0 20px;
+}
+
+.hero-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1200px;
     padding: 0 20px;
-  }
-  
-  .hero-content {
+}
+
+.hero-content {
     position: relative;
     z-index: 1;
     text-align: left;
     max-width: 600px;
-  }
-  
-  .hero-title {
+}
+
+.hero-title {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-  }
-  
-  .hero-slogan {
+}
+
+.hero-slogan {
     font-size: 1.8rem;
     font-weight: 500;
     margin-bottom: 1rem;
-  }
-  
-  .hero-subtitle {
+}
+
+.hero-subtitle {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-  }
-  
-  .hero-btn {
+}
+
+.hero-btn {
     font-size: 1.2rem;
     padding: 1rem 2.5rem;
-  }
-  
-  .hero-image {
+    transition: all 0.3s ease-in-out;
+}
+
+.hero-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-image {
     position: relative;
     flex: 1;
-  }
-  
-  .hero-image img {
+}
+
+.hero-image img {
     max-width: 100%;
     height: auto;
-  }
-  
-  .hero-shapes {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-  }
-  
-  .hero-shape-1 {
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    top: -200px;
-    left: -200px;
-  }
-  
-  .hero-shape-2 {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    bottom: -150px;
-    right: -150px;
-  }
-  
-  /* Services Section */
-  .container.py-5 {
+}
+
+/* Services Section */
+.container.py-5 {
     padding-top: 60px;
     padding-bottom: 60px;
-  }
-  
-  .row {
+}
+
+.row {
     margin-top: 30px;
-  }
-  
-  /* Card Styling */
-  .card {
+}
+
+.card {
     border: none;
     transition: transform 0.3s ease-in-out;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
-  }
-  
-  .card:hover {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.card:hover {
     transform: translateY(-10px);
-  }
-  
-  .card-img-top {
+}
+
+.card-img-top {
     height: 200px;
     object-fit: cover;
     border-radius: 8px;
-  }
-  
-  .card-body {
+}
+
+.card-body {
     padding: 20px;
-  }
-  
-  .card-title {
+}
+
+.card-title {
     font-size: 1.5rem;
     font-weight: bold;
-  }
-  
-  .card-text {
+}
+
+.card-text {
     font-size: 1rem;
     color: #555;
-  }
-  
-  /* Call to Action Section */
-  .container.py-5.text-center {
+}
+
+/* Call to Action Section */
+.container.py-5.text-center {
     background-color: #f7f7f7;
     padding-top: 60px;
     padding-bottom: 60px;
-  }
-  
-  .container.py-5.text-center h2 {
+}
+
+.container.py-5.text-center h2 {
     font-size: 2.5rem;
-  }
-  
-  .container.py-5.text-center .lead {
+}
+
+.container.py-5.text-center .lead {
     font-size: 1.2rem;
     margin-bottom: 20px;
-  }
-  
-  .btn-lg {
+}
+
+.btn-lg {
     font-size: 1.2rem;
     padding: 12px 30px;
-  }
-  
-  .btn-primary {
+}
+
+.btn-primary {
     background-color: #007bff;
     border: none;
     transition: background-color 0.3s ease-in-out;
-  }
-  
-  .btn-primary:hover {
+}
+
+.btn-primary:hover {
     background-color: #0056b3;
-  }
-  
-  /* Hover Button Effect */
-  .hover-btn {
+}
+
+/* Hover Button Effect */
+.hover-btn {
     transition: all 0.3s ease-in-out;
-  }
-  
-  .hover-btn:hover {
+}
+
+.hover-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Our Team Section */
-  .container.py-5 {
+}
+
+/* Our Team Section */
+.container.py-5 {
     padding-top: 60px;
     padding-bottom: 60px;
-  }
-  
-  .container.py-5 h2 {
+}
+
+.container.py-5 h2 {
     font-size: 2.5rem;
     margin-bottom: 40px;
     color: #333;
-  }
-  
-  .row.text-center.g-4 {
+}
+
+.row.text-center.g-4 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-  }
-  
-  .card {
+}
+
+.card {
     border: none;
     transition: transform 0.3s ease-in-out;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -212,237 +195,275 @@
     width: 100%;
     max-width: 320px;
     margin: 15px;
-  }
-  
-  .card:hover {
+}
+
+.card:hover {
     transform: translateY(-10px);
-  }
-  
-  .card-img-top {
+}
+
+.card-img-top {
     height: 250px;
     object-fit: cover;
     border-bottom: 3px solid #007bff;
-  }
-  
-  .card-body {
+}
+
+.card-body {
     padding: 20px;
     background-color: #fff;
     text-align: center;
-  }
-  
-  .card-title {
+}
+
+.card-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 10px;
-  }
-  
-  .card-subtitle {
+}
+
+.card-subtitle {
     font-size: 1.1rem;
     color: #888;
     margin-bottom: 15px;
-  }
-  
-  .card-text {
+}
+
+.card-text {
     font-size: 1rem;
     color: #555;
     margin-bottom: 20px;
-  }
-  
-  .card .d-flex {
+}
+
+.card .d-flex {
     justify-content: center;
     gap: 10px;
-  }
-  
-  .card .btn-outline-primary {
+}
+
+.card .btn-outline-primary {
     font-size: 1rem;
     padding: 8px 20px;
     border-radius: 20px;
-  }
-  
-  .card .btn-outline-danger {
+}
+
+.card .btn-outline-danger {
     font-size: 1rem;
     padding: 8px 20px;
     border-radius: 20px;
-  }
-  
-  /* Media Queries for Responsive Design */
-  
-  /* Tablet */
-  @media (max-width: 1024px) {
+}
+
+/* Media Queries for Responsive Design */
+
+/* Desktop and Larger Screens */
+@media (min-width: 1200px) {
     .hero-title {
-      font-size: 2.5rem;
+        font-size: 4rem;
     }
-  
+    
     .hero-slogan {
-      font-size: 1.3rem;
+        font-size: 2rem;
     }
-  
+
     .hero-subtitle {
-      font-size: 1rem;
+        font-size: 1.3rem;
     }
-  
+
     .hero-btn {
-      padding: 8px 20px;
-      font-size: 1rem;
+        padding: 12px 30px;
+        font-size: 1.3rem;
     }
-  
+
     .container.py-5 h2 {
-      font-size: 2.2rem;
+        font-size: 3rem;
     }
-  
+
     .card-img-top {
-      height: 200px;
+        height: 250px;
     }
-  
+
     .card-title {
-      font-size: 1.4rem;
+        font-size: 1.7rem;
     }
-  
+
     .card-text {
-      font-size: 0.95rem;
+        font-size: 1.1rem;
     }
-  }
-  
-  /* Mobile (Portrait) */
-  @media (max-width: 768px) {
-    .hero-section {
-      padding: 80px 0;
-    }
-  
+}
+
+/* Tablet Screens */
+@media (max-width: 1024px) {
     .hero-title {
-      font-size: 2rem;
+        font-size: 2.5rem;
     }
-  
+
     .hero-slogan {
-      font-size: 1.2rem;
+        font-size: 1.3rem;
     }
-  
+
     .hero-subtitle {
-      font-size: 1rem;
+        font-size: 1rem;
     }
-  
+
     .hero-btn {
-      padding: 8px 20px;
-      font-size: 1rem;
+        padding: 8px 20px;
+        font-size: 1rem;
     }
-  
+
+    .container.py-5 h2 {
+        font-size: 2.2rem;
+    }
+
+    .card-img-top {
+        height: 200px;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    .card-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile Portrait Screens */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 80px 0;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-slogan {
+        font-size: 1.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-btn {
+        padding: 8px 20px;
+        font-size: 1rem;
+    }
+
     .container.py-5 {
-      padding-top: 40px;
-      padding-bottom: 40px;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
-  
+
     .container.py-5 h2 {
-      font-size: 2rem;
+        font-size: 2rem;
     }
-  
+
     .card {
-      max-width: 90%;
-      margin: 10px auto;
+        max-width: 90%;
+        margin: 10px auto;
     }
-  
+
     .card-img-top {
-      height: 180px;
+        height: 180px;
     }
-  
+
     .card-title {
-      font-size: 1.3rem;
+        font-size: 1.3rem;
     }
-  
+
     .card-text {
-      font-size: 0.9rem;
+        font-size: 0.9rem;
     }
-  
-    .card .btn-outline-primary, .card .btn-outline-danger {
-      font-size: 0.9rem;
-      padding: 6px 15px;
+
+    .card .btn-outline-primary,
+    .card .btn-outline-danger {
+        font-size: 0.9rem;
+        padding: 6px 15px;
     }
-  }
-  
-  /* Mobile (Landscape) */
-  @media (max-width: 480px) {
+}
+
+/* Mobile Landscape Screens */
+@media (max-width: 480px) {
     .container.py-5 h2 {
-      font-size: 1.8rem;
+        font-size: 1.8rem;
     }
-  
+
     .card {
-      max-width: 100%;
+        max-width: 100%;
     }
-  
+
     .card-img-top {
-      height: 150px;
+        height: 150px;
     }
-  
+
     .card-title {
-      font-size: 1.2rem;
+        font-size: 1.2rem;
     }
-  
+
     .card-text {
-      font-size: 0.85rem;
+        font-size: 0.85rem;
     }
-  
-    .card .btn-outline-primary, .card .btn-outline-danger {
-      font-size: 0.85rem;
-      padding: 6px 12px;
+
+    .card .btn-outline-primary,
+    .card .btn-outline-danger {
+        font-size: 0.85rem;
+        padding: 6px 12px;
     }
-  }
-  
-  /* Small Mobile */
-  @media (max-width: 576px) {
+}
+
+/* Small Mobile Screens */
+@media (max-width: 576px) {
     .container.py-5 h2 {
-      font-size: 1.8rem;
+        font-size: 1.8rem;
     }
-  
+
     .card-img-top {
-      height: 150px;
+        height: 150px;
     }
-  
+
     .card-title {
-      font-size: 1.2rem;
+        font-size: 1.2rem;
     }
-  
+
     .card-text {
-      font-size: 0.85rem;
+        font-size: 0.85rem;
     }
-  
-    .card .btn-outline-primary, .card .btn-outline-danger {
-      font-size: 0.9rem;
-      padding: 6px 15px;
+
+    .card .btn-outline-primary,
+    .card .btn-outline-danger {
+        font-size: 0.9rem;
+        padding: 6px 15px;
     }
-  }
-  
-  /* Very Small Mobile */
-  @media (max-width: 375px) {
+}
+
+/* Very Small Mobile Screens */
+@media (max-width: 375px) {
     .hero-section {
-      padding: 60px 0;
+        padding: 60px 0;
     }
-  
+
     .hero-title {
-      font-size: 1.8rem;
+        font-size: 1.8rem;
     }
-  
+
     .hero-slogan {
-      font-size: 1rem;
+        font-size: 1rem;
     }
-  
+
     .hero-subtitle {
-      font-size: 0.9rem;
+        font-size: 0.9rem;
     }
-  
+
     .hero-btn {
-      padding: 6px 15px;
-      font-size: 0.9rem;
+        padding: 6px 15px;
+        font-size: 0.9rem;
     }
-  
+
     .container.py-5 h2 {
-      font-size: 1.6rem;
+        font-size: 1.6rem;
     }
-  
+
     .card-title {
-      font-size: 1rem;
+        font-size: 1rem;
     }
-  
+
     .card-text {
-      font-size: 0.75rem;
+        font-size: 0.75rem;
     }
-  }
-  
+}
