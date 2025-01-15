@@ -23,14 +23,17 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, #4b6cb7, #182848); 
+    background: linear-gradient(to right, #4b6cb7, #182848);
     color: #fff;
     overflow: hidden;
-    padding: 0 20px;
+    width: 100%; /* Ensure full width */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
     background-image: url('../images/Freelance.jpeg');
     background-size: cover;
     background-position: center;
 }
+
 
 
 .hero-wrapper {
