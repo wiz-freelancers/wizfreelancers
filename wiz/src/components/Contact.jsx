@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import emailjs from 'emailjs-com';
-import './Contact.css'; // External CSS for additional styling
+import './Contact.css';  // External CSS for additional styling
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -61,8 +61,8 @@ const Contact = () => {
     <div className="contact-container container mt-5">
       <div className="row">
         <div className="col-md-8 mx-auto">
-          <h1 className="text-center mb-4 contact-title">Let’s Connect!</h1>
-          <p className="text-center mb-5 contact-subtitle">We'd love to hear your thoughts, ideas, or project plans. Fill out the form below, and we'll get back to you!</p>
+          <h1 className="text-center mb-4 contact-title">Let’s Get In Touch!</h1>
+          <p className="text-center mb-5 contact-subtitle">We're excited to collaborate with you. Fill out the form below and we'll be in touch shortly!</p>
           
           <form onSubmit={handleSubmit}>
             {[
@@ -86,7 +86,7 @@ const Contact = () => {
                 <label htmlFor={id} className="form-label">{label}</label>
                 {type === 'textarea' ? (
                   <textarea
-                    className="form-control"
+                    className="form-control custom-input"
                     id={id}
                     name={id}
                     value={formData[id]}
@@ -98,7 +98,7 @@ const Contact = () => {
                 ) : (
                   <input
                     type={type}
-                    className="form-control"
+                    className="form-control custom-input"
                     id={id}
                     name={id}
                     value={formData[id]}
@@ -123,16 +123,16 @@ const Contact = () => {
         <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }} role="dialog">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
-              <div className="modal-header" style={{ backgroundColor: '#28a745', color: 'white' }}>
-                <h5 className="modal-title">Hooray!</h5>
+              <div className="modal-header">
+                <h5 className="modal-title">Awesome! 🎉</h5>
                 <button type="button" className="close" onClick={() => setShowModal(false)} aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div className="modal-body" style={{ backgroundColor: '#f4f7f6' }}>
-                <p>Your message has been successfully sent. We will get back to you shortly. Thank you for reaching out!</p>
+              <div className="modal-body">
+                <p className="modal-text">Your message has been successfully received! We're thrilled to collaborate with you. Expect an email response soon!</p>
               </div>
-              <div className="modal-footer" style={{ backgroundColor: '#f8f9fa' }}>
+              <div className="modal-footer">
                 <button type="button" className="btn btn-success" onClick={() => setShowModal(false)}>Close</button>
               </div>
             </div>
