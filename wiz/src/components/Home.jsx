@@ -13,31 +13,32 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <section className="hero-section" style={{ position: 'relative' }}>
-        <div
-          className="hero-background"
-          style={{
-            backgroundImage: `url(${freelanceImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            height: '100vh',
-            width: '100%',
-            position: 'absolute',
-            zIndex: '-1',
-          }}
-        ></div>
-        <div className="container h-100 d-flex align-items-center justify-content-center">
-          <div className="text-center text-white">
-            <h1 className="hero-title display-4 fw-bold">WELCOME TO WIZ FREELANCERS</h1>
-            <p className="hero-slogan lead">Redefining Web Excellence</p>
-            <p className="hero-subtitle mb-4">
-              From bold ideas to seamless execution, we turn visions into reality.
-            </p>
-            <Link to="/services" className="hero-btn btn btn-primary btn-lg shadow-lg">
-              Explore Our Services
-            </Link>
-          </div>
-        </div>
-      </section>
+  <div
+    className="hero-background"
+    style={{
+      backgroundImage: `url(${freelanceImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '100vh',
+      width: '100%',
+      position: 'absolute',
+      zIndex: '-1',
+    }}
+  ></div>
+  <div className="container h-100 d-flex align-items-center justify-content-center">
+    <div className="text-center text-white">
+      <h1 className="hero-title display-4 fw-bold">WELCOME TO WIZ FREELANCERS</h1>
+      <p className="hero-slogan lead">Redefining Web Excellence</p>
+      <p className="hero-subtitle mb-4">
+        From bold ideas to seamless execution, we turn visions into reality.
+      </p>
+      <Link to="/services" className="hero-btn btn btn-primary btn-lg shadow-lg">
+        Explore Our Services
+      </Link>
+    </div>
+  </div>
+</section>
+
 
       {/* Services Section */}
       <div className="container py-5">

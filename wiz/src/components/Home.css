@@ -19,11 +19,11 @@ html, body {
 /* Hero Section */
 .hero-section {
     position: relative;
-    height: 100vh;
+    height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, #4b6cb7, #182848);
+    background: linear-gradient(to right, #ffffff, #ffffff);
     color: #fff;
     overflow: hidden;
     width: 100%; /* Ensure full width */
@@ -72,13 +72,18 @@ html, body {
 .hero-btn {
     font-size: 1.2rem;
     padding: 1rem 2.5rem;
+    background-color: #007bff; /* Set the desired color */
+    color: #fff; /* White text */
+    border: none;
     transition: all 0.3s ease-in-out;
-}
-
-.hero-btn:hover {
+  }
+  
+  .hero-btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
     transform: scale(1.1);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
+  }
+  
 
 .hero-image {
     position: relative;
