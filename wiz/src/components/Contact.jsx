@@ -70,10 +70,17 @@ const Contact = () => {
               { id: 'mobile', label: 'Mobile Number', type: 'text', placeholder: 'Enter your mobile number' },
               { id: 'projectTitle', label: 'Project Title', type: 'text', placeholder: 'Enter the title of your project' },
               { id: 'budget', label: 'Project Budget', type: 'text', placeholder: 'Enter your project budget' },
-              { id: 'uiUxUrl', label: 'UI/UX Reference URL', type: 'url', placeholder: 'Enter a link to UI/UX reference' },
+              {
+                id: 'uiUxUrl',
+                label: 'UI/UX Reference URL',
+                type: 'text',
+                placeholder: 'Enter a link to UI/UX reference',
+                pattern: '(https?:\\/\\/)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)',
+                title: "Please enter a valid URL starting with 'http://', 'https://', or 'www.'"
+              },
               { id: 'projectDescription', label: 'Project Description', type: 'textarea', placeholder: 'Describe your project in detail' },
               { id: 'message', label: 'Your Message', type: 'textarea', placeholder: 'Enter your message' },
-            ].map(({ id, label, type, placeholder }) => (
+            ].map(({ id, label, type, placeholder, pattern, title }) => (
               <div className="mb-3" key={id}>
                 <label htmlFor={id} className="form-label" style={{ color: '#17a2b8' }}>{label}</label>
                 {type === 'textarea' ? (
@@ -96,6 +103,8 @@ const Contact = () => {
                     value={formData[id]}
                     onChange={handleChange}
                     placeholder={placeholder}
+                    pattern={pattern}
+                    title={title}
                     required
                   />
                 )}
