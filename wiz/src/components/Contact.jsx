@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import emailjs from 'emailjs-com';
+import './Contact.css'; // External CSS for additional styling
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -57,11 +58,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="contact-container container mt-5">
       <div className="row">
         <div className="col-md-8 mx-auto">
-          <h1 className="text-center mb-4" style={{ color: '#007bff' }}>Contact Us</h1>
-          <p className="text-center mb-5" style={{ color: '#28a745' }}>Please fill out the form below for project inquiries, collaborations, or to discuss your ideas with us!</p>
+          <h1 className="text-center mb-4 contact-title">Let’s Connect!</h1>
+          <p className="text-center mb-5 contact-subtitle">We'd love to hear your thoughts, ideas, or project plans. Fill out the form below, and we'll get back to you!</p>
           
           <form onSubmit={handleSubmit}>
             {[
@@ -82,10 +83,10 @@ const Contact = () => {
               { id: 'message', label: 'Your Message', type: 'textarea', placeholder: 'Enter your message' },
             ].map(({ id, label, type, placeholder, pattern, title }) => (
               <div className="mb-3" key={id}>
-                <label htmlFor={id} className="form-label" style={{ color: '#17a2b8' }}>{label}</label>
+                <label htmlFor={id} className="form-label">{label}</label>
                 {type === 'textarea' ? (
                   <textarea
-                    className="form-control border-info"
+                    className="form-control"
                     id={id}
                     name={id}
                     value={formData[id]}
@@ -97,7 +98,7 @@ const Contact = () => {
                 ) : (
                   <input
                     type={type}
-                    className="form-control border-primary"
+                    className="form-control"
                     id={id}
                     name={id}
                     value={formData[id]}
@@ -112,7 +113,7 @@ const Contact = () => {
             ))}
 
             <div className="text-center">
-              <button type="submit" className="btn btn-success">Send Message</button>
+              <button type="submit" className="btn btn-primary submit-btn">Send Message</button>
             </div>
           </form>
         </div>
@@ -122,17 +123,17 @@ const Contact = () => {
         <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }} role="dialog">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
-              <div className="modal-header" style={{ backgroundColor: '#007bff', color: 'white' }}>
-                <h5 className="modal-title">Thank You!</h5>
+              <div className="modal-header" style={{ backgroundColor: '#28a745', color: 'white' }}>
+                <h5 className="modal-title">Hooray!</h5>
                 <button type="button" className="close" onClick={() => setShowModal(false)} aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div className="modal-body" style={{ backgroundColor: '#e9ecef' }}>
-                <p>Your message has been successfully submitted. We will get back to you soon!</p>
+              <div className="modal-body" style={{ backgroundColor: '#f4f7f6' }}>
+                <p>Your message has been successfully sent. We will get back to you shortly. Thank you for reaching out!</p>
               </div>
               <div className="modal-footer" style={{ backgroundColor: '#f8f9fa' }}>
-                <button type="button" className="btn btn-primary" onClick={() => setShowModal(false)}>Close</button>
+                <button type="button" className="btn btn-success" onClick={() => setShowModal(false)}>Close</button>
               </div>
             </div>
           </div>
