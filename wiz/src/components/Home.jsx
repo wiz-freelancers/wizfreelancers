@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import freelanceImage from '../images/Freelance.jpeg';
 import './Home.css';
-import API_BASE_URL from '../config/api.js';
+
+const API_URL = process.env.REACT_APP_API_URL || 'https://wiz-freelancers-backend.onrender.com/api';
 
 const Home = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -14,7 +15,7 @@ const Home = () => {
     if (!imagePath) return '';
     if (imagePath.startsWith('http')) return imagePath;
     const cleanPath = imagePath.replace(/\/+/g, '/').replace(/^\//, '');
-    return `http://localhost:8000${cleanPath}`;
+    return `${API_URL}${cleanPath}`;
   };
 
   useEffect(() => {
@@ -22,8 +23,8 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const [teamResponse, servicesResponse] = await Promise.all([
-          fetch(`${API_BASE_URL}/team/`),
-          fetch(`${API_BASE_URL}/services/`)
+          fetch(`${API_URL}/team/`),
+          fetch(`${API_URL}/services/`)
         ]);
 
         if (!teamResponse.ok || !servicesResponse.ok) {
