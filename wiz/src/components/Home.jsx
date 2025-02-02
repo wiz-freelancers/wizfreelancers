@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import freelanceImage from '../images/Freelance.jpeg';
+// import freelanceImage from '../assets/images/freelance.jpg';
+// const API_URL = process.env.REACT_APP_API_URL;
 import './Home.css';
-
-const API_URL = process.env.NODE_ENV === 'development' 
-  ? 'http://127.0.0.1:8000/api'
-  : 'https://wiz-freelancers-backend.onrender.com/api';
 
 const MEDIA_BASE_URL = process.env.NODE_ENV === 'development'
   ? 'http://127.0.0.1:8000'
@@ -36,8 +33,8 @@ const Home = () => {
         };
 
         const [teamResponse, servicesResponse] = await Promise.all([
-          fetch(`${process.env.REACT_APP_API_URL}/team/`, options),
-          fetch(`${process.env.REACT_APP_API_URL}/services/`, options)
+          fetch(`${process.env.REACT_APP_API_URL}/api/team/`, options),
+          fetch(`${process.env.REACT_APP_API_URL}/api/services/`, options)
         ]);
 
         if (!teamResponse.ok) {
