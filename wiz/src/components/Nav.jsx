@@ -5,20 +5,25 @@ import logo from '../images/logo.jpeg'; // Correct import statement
 
 const Nav = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div className="container-fluid">
-        {/* Logo */}
-        <Link className="navbar-brand me-auto" to="/">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+      <div className="container"> {/* Changed to container for better width control */}
+        {/* Logo with improved spacing */}
+        <Link className="navbar-brand d-flex align-items-center" to="/">
           <img 
-            src={logo}  // Use the imported logo variable here
+            src={logo}
             alt="Wiz Freelancers Logo" 
-            style={{ height: '40px' }} // Adjust the size as needed
+            style={{ 
+              height: '45px',
+              marginRight: '10px'
+            }}
+            className="rounded" // Slightly rounded corners for the logo
           />
+          <span className="fw-bold">Wiz Freelancers</span> {/* Added company name */}
         </Link>
         
         {/* Hamburger Menu */}
         <button 
-          className="navbar-toggler ms-auto"  // Push the hamburger to the right
+          className="navbar-toggler"
           type="button" 
           data-bs-toggle="collapse" 
           data-bs-target="#navbarNav" 
@@ -31,18 +36,18 @@ const Nav = () => {
         
         {/* Navbar items */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto"> {/* Right-alignment for nav items */}
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link px-3 fw-medium" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/About">About</Link>
+              <Link className="nav-link px-3 fw-medium" to="/Services">Services</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/Services">Services</Link>
+              <Link className="nav-link px-3 fw-medium" to="/About">About</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/Contact">Contact</Link>
+              <Link className="nav-link px-3 fw-medium" to="/Contact">Contact</Link>
             </li>
           </ul>
         </div>
