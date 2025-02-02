@@ -59,8 +59,7 @@ else:
 # Update CORS settings based on environment
 if IS_PRODUCTION:
     CORS_ALLOWED_ORIGINS = [
-        "https://wizfreelancers.onrender.com",
-        "https://wiz-freelancers-backend.onrender.com"
+        "https://wiz-freelancers.onrender.com"  # Only the frontend URL
     ]
     CORS_ALLOW_ALL_ORIGINS = False
     CORS_ALLOW_CREDENTIALS = True
@@ -82,6 +81,9 @@ if IS_PRODUCTION:
         'user-agent',
         'x-csrftoken',
         'x-requested-with',
+    ]
+    ALLOWED_HOSTS = [
+        'wiz-freelancers-backend.onrender.com'  # Only the backend URL
     ]
 else:
     # Development settings

@@ -33,7 +33,6 @@ const Home = () => {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
           },
-          credentials: 'include'  // Important for CORS
         };
 
         const [teamResponse, servicesResponse] = await Promise.all([
@@ -41,8 +40,16 @@ const Home = () => {
           fetch(`${process.env.REACT_APP_API_URL}/api/services/`, options)
         ]);
 
-        if (!teamResponse.ok || !servicesResponse.ok) {
-          throw new Error('Network response was not ok');
+        if (!teamResponse.ok) {
+          const text = await teamResponse.text();
+          console.error('Team Response:', text);
+          throw new Error(`Team API error: ${teamResponse.status}`);
+        }
+
+        if (!servicesResponse.ok) {
+          const text = await servicesResponse.text();
+          console.error('Services Response:', text);
+          throw new Error(`Services API error: ${servicesResponse.status}`);
         }
 
         const teamData = await teamResponse.json();
@@ -55,8 +62,8 @@ const Home = () => {
         }
       } catch (error) {
         console.error('Error:', error);
-        setError(error.message);
         if (mounted) {
+          setError(error.message);
           setLoading(false);
         }
       }
