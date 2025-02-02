@@ -5,11 +5,11 @@ import './Home.css';
 
 const API_URL = process.env.NODE_ENV === 'development' 
   ? 'http://127.0.0.1:8000/api'
-  : `${process.env.REACT_APP_API_URL}/api`;
+  : 'https://wiz-freelancers-backend.onrender.com/api';
 
 const MEDIA_BASE_URL = process.env.NODE_ENV === 'development'
   ? 'http://127.0.0.1:8000'
-  : process.env.REACT_APP_API_URL;
+  : 'https://wiz-freelancers-backend.onrender.com';
 
 const Home = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -27,36 +27,36 @@ const Home = () => {
     let mounted = true;
     const fetchData = async () => {
       try {
-        const requestOptions = {
+        const options = {
           method: 'GET',
-          credentials: 'include',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
           },
+          credentials: 'include'  // Important for CORS
         };
 
         const [teamResponse, servicesResponse] = await Promise.all([
-          fetch(`${API_URL}/team/`, requestOptions),
-          fetch(`${API_URL}/services/`, requestOptions)
+          fetch(`${process.env.REACT_APP_API_URL}/api/team/`, options),
+          fetch(`${process.env.REACT_APP_API_URL}/api/services/`, options)
         ]);
 
         if (!teamResponse.ok || !servicesResponse.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error('Network response was not ok');
         }
 
         const teamData = await teamResponse.json();
         const servicesData = await servicesResponse.json();
 
         if (mounted) {
-          setTeamMembers(Array.isArray(teamData) ? teamData : teamData.results || []);
-          setServices(Array.isArray(servicesData) ? servicesData : servicesData.results || []);
+          setTeamMembers(teamData);
+          setServices(servicesData);
           setLoading(false);
         }
-      } catch (err) {
-        console.error('Error:', err);
+      } catch (error) {
+        console.error('Error:', error);
+        setError(error.message);
         if (mounted) {
-          setError('Failed to load data');
           setLoading(false);
         }
       }

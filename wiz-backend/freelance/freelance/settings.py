@@ -59,25 +59,37 @@ else:
 # Update CORS settings based on environment
 if IS_PRODUCTION:
     CORS_ALLOWED_ORIGINS = [
-        "https://wizfreelancers.onrender.com"
+        "https://wizfreelancers.onrender.com",
+        "https://wiz-freelancers-backend.onrender.com"
     ]
     CORS_ALLOW_ALL_ORIGINS = False
+    CORS_ALLOW_CREDENTIALS = True
+    CORS_ALLOW_METHODS = [
+        'GET',
+        'POST',
+        'PUT',
+        'PATCH',
+        'DELETE',
+        'OPTIONS'
+    ]
+    CORS_ALLOW_HEADERS = [
+        'accept',
+        'accept-encoding',
+        'authorization',
+        'content-type',
+        'dnt',
+        'origin',
+        'user-agent',
+        'x-csrftoken',
+        'x-requested-with',
+    ]
 else:
+    # Development settings
     CORS_ALLOWED_ORIGINS = [
         "http://localhost:3000",
     ]
     CORS_ALLOW_ALL_ORIGINS = True
-
-# Keep these CORS settings for both environments
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_METHODS = [
-    'GET',
-    'POST',
-    'PUT',
-    'PATCH',
-    'DELETE',
-    'OPTIONS'
-]
+    CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -97,6 +109,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -205,4 +218,8 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+
+# Add whitenoise storage
+if IS_PRODUCTION:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
