@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+    "@babel/core": "7.23.9",
+    "@babel/preset-react": "7.23.3",
     "@fortawesome/fontawesome-free": "^6.5.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -17,14 +20,9 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/core": "^7.23.9",
-    "@babel/preset-react": "^7.23.3"
-  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "DISABLE_ESLINT_PLUGIN=true SKIP_PREFLIGHT_CHECK=true react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
