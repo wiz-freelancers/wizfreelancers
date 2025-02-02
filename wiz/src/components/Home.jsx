@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import freelanceImage from '../images/Freelance.jpeg';
 import './Home.css';
-import API_BASE_URL from '../config/api';
+import API_BASE_URL from '../config/api.js';
 
 const Home = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -14,7 +14,7 @@ const Home = () => {
     if (!imagePath) return '';
     if (imagePath.startsWith('http')) return imagePath;
     const cleanPath = imagePath.replace(/\/+/g, '/').replace(/^\//, '');
-    return `${API_BASE_URL}${cleanPath}`;
+    return `http://localhost:8000${cleanPath}`;
   };
 
   useEffect(() => {
@@ -42,7 +42,6 @@ const Home = () => {
         if (mounted) {
           setError('Failed to load data');
           setLoading(false);
-          console.error('Error fetching data:', err);
         }
       }
     };
