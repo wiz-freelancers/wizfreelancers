@@ -36,8 +36,8 @@ const Home = () => {
         };
 
         const [teamResponse, servicesResponse] = await Promise.all([
-          fetch(`${process.env.REACT_APP_API_URL}/api/team/`, options),
-          fetch(`${process.env.REACT_APP_API_URL}/api/services/`, options)
+          fetch(`${process.env.REACT_APP_API_URL}/team/`, options),
+          fetch(`${process.env.REACT_APP_API_URL}/services/`, options)
         ]);
 
         if (!teamResponse.ok) {
