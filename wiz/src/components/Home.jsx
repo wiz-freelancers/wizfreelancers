@@ -1,127 +1,239 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import freelanceImage from '../images/Freelance.jpeg';
-import webDevelopmentImg from '../images/web-development.jpeg';
-import webDesigningImg from '../images/web-designing.jpeg';
-import ecommerceDevelopmentImg from '../images/ecommerce-development.jpeg';
-import shivamImage from '../images/shivam-kumar.jpeg';
-import nishantImage from '../images/nishant-kumar.jpeg';
 import './Home.css';
+import API_BASE_URL from '../config/api';
 
 const Home = () => {
-  return (
-    <>
-      {/* Hero Section */}
-      <section className="hero-section" style={{ position: 'relative' }}>
-  <div
-    className="hero-background"
-    style={{
-      backgroundImage: `url(${freelanceImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      height: '100vh',
-      width: '100%',
-      position: 'absolute',
-      zIndex: '-1',
-    }}
-  ></div>
-  <div className="container h-100 d-flex align-items-center justify-content-center">
-    <div className="text-center text-white">
-      <h1 className="hero-title display-4 fw-bold">WELCOME TO WIZ FREELANCERS</h1>
-      <p className="hero-slogan lead">Redefining Web Excellence</p>
-      <p className="hero-subtitle mb-4">
-        From bold ideas to seamless execution, we turn visions into reality.
-      </p>
-      <Link to="/services" className="hero-btn btn btn-primary btn-lg shadow-lg">
-        Explore Our Services
-      </Link>
-    </div>
-  </div>
-</section>
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  const getImageUrl = (imagePath) => {
+    if (!imagePath) return '';
+    if (imagePath.startsWith('http')) return imagePath;
+    const cleanPath = imagePath.replace(/\/+/g, '/').replace(/^\//, '');
+    return `${API_BASE_URL}${cleanPath}`;
+  };
+
+  useEffect(() => {
+    let mounted = true;
+    const fetchData = async () => {
+      try {
+        const [teamResponse, servicesResponse] = await Promise.all([
+          fetch(`${API_BASE_URL}/team/`),
+          fetch(`${API_BASE_URL}/services/`)
+        ]);
+
+        if (!teamResponse.ok || !servicesResponse.ok) {
+          throw new Error('Failed to fetch data');
+        }
+
+        const teamData = await teamResponse.json();
+        const servicesData = await servicesResponse.json();
+
+        if (mounted) {
+          setTeamMembers(Array.isArray(teamData) ? teamData : teamData.results || []);
+          setServices(Array.isArray(servicesData) ? servicesData : servicesData.results || []);
+          setLoading(false);
+        }
+      } catch (err) {
+        if (mounted) {
+          setError('Failed to load data');
+          setLoading(false);
+          console.error('Error fetching data:', err);
+        }
+      }
+    };
+
+    fetchData();
+    return () => { mounted = false; };
+  }, []);
+
+  return (
+    <div className="home-container">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-overlay"></div>
+        <div className="container-fluid px-4">
+          <div className="hero-content">
+            <div className="company-title">Wiz Freelancers</div>
+            <h1 className="hero-title">Transform Your Digital Vision Into Reality</h1>
+            <p className="hero-subtitle">Expert Web Development & Digital Solutions</p>
+            <div className="hero-cta">
+              <Link to="/services" className="btn btn-primary btn-lg me-3">
+                Explore Services
+              </Link>
+              <Link to="/contact" className="btn btn-outline-light btn-lg">
+                Get Started
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="stats-section">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3 col-6">
+              <div className="stat-item">
+                <h3>100+</h3>
+                <p>Projects Completed</p>
+              </div>
+            </div>
+            <div className="col-md-3 col-6">
+              <div className="stat-item">
+                <h3>50+</h3>
+                <p>Happy Clients</p>
+              </div>
+            </div>
+            <div className="col-md-3 col-6">
+              <div className="stat-item">
+                <h3>5+</h3>
+                <p>Years Experience</p>
+              </div>
+            </div>
+            <div className="col-md-3 col-6">
+              <div className="stat-item">
+                <h3>24/7</h3>
+                <p>Support Available</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Services Section */}
-      <div className="container py-5">
-        <h2 className="text-center mb-4">Our Services</h2>
-        <div className="row text-center g-4">
-          {[
-            { img: webDevelopmentImg, title: 'Web Development', text: 'Building scalable, secure, and dynamic websites.' },
-            { img: webDesigningImg, title: 'Web Designing', text: 'Creating beautiful, responsive designs.' },
-            { img: ecommerceDevelopmentImg, title: 'E-commerce Development', text: 'Building secure, user-friendly online stores.' },
-          ].map((service, index) => (
-            <div key={index} className="col-md-6 col-lg-4 mb-4">
-              <div className="card shadow-lg border-0 h-100 hover-card">
-                <img src={service.img} className="card-img-top" alt={service.title} />
-                <div className="card-body">
-                  <h5 className="card-title">{service.title}</h5>
-                  <p className="card-text">{service.text}</p>
-                </div>
+      <section className="services-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>Our Services</h2>
+            <p>Comprehensive digital solutions tailored to your business needs</p>
+          </div>
+          
+          {loading ? (
+            <div className="loader">
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Our Team Section */}
-      <div className="container py-5">
-        <h2 className="text-center mb-4">Meet Our Team</h2>
-        <div className="row text-center g-4">
-          {[
-            {
-              img: shivamImage,
-              name: 'Shivam Kumar',
-              role: 'Web Developer',
-              bio: 'Shivam Kumar is an experienced Web Developer specializing in system analysis, database design, and implementing business solutions. Skilled in product management and ensuring quality control throughout the project lifecycle, he delivers impactful solutions with a focus on customer satisfaction and timely delivery.',
-              linkedin: 'https://www.linkedin.com/in/shivam-kumar-6801421ab/',
-              gmail: 'shivamskr151@gmail.com',
-            },
-            {
-              img: nishantImage,
-              name: 'Nishant Kumar',
-              role: 'Web Developer',
-              bio: 'Nishant Kumar brings extensive experience in requirement gathering, system analysis, and application design. He excels in product management and quality control, ensuring projects are delivered with precision and client satisfaction within set timelines.',
-              linkedin: 'https://www.linkedin.com/in/nishant-kumar-8911262b2/',
-              gmail: 'kumarnishantpradhan@gmail.com',
-            },
-          ].map((teamMember, index) => (
-            <div key={index} className="col-md-6 col-lg-4 mb-4">
-              <div className="card shadow-lg border-0 h-100 hover-card">
-                <img src={teamMember.img} className="card-img-top" alt={teamMember.name} />
-                <div className="card-body">
-                  <h5 className="card-title">{teamMember.name}</h5>
-                  <p className="card-subtitle text-muted">{teamMember.role}</p>
-                  <p className="card-text">{teamMember.bio}</p>
-                  <div className="d-flex justify-content-center">
-                    <a
-                      href={teamMember.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-outline-primary me-2"
-                    >
-                      LinkedIn
-                    </a>
-                    <a href={`mailto:${teamMember.gmail}`} className="btn btn-outline-danger">
-                      Email
-                    </a>
+          ) : error ? (
+            <div className="alert alert-danger text-center" role="alert">
+              {error}
+            </div>
+          ) : services && services.length > 0 ? (
+            <div className="row g-4">
+              {services.map((service) => (
+                <div key={service.id} className="col-md-6 col-lg-4">
+                  <div className="service-card">
+                    <div className="service-image">
+                      <img 
+                        src={getImageUrl(service.image)} 
+                        alt={service.title}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = 'https://via.placeholder.com/300?text=Service';
+                        }}
+                      />
+                    </div>
+                    <div className="service-content">
+                      <h3>{service.title}</h3>
+                      <p>{service.description}</p>
+                    </div>
                   </div>
                 </div>
+              ))}
+            </div>
+          ) : (
+            <div className="no-data">
+              <p>No services available at the moment.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="team-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>Meet Our Experts</h2>
+            <p>Talented professionals dedicated to your success</p>
+          </div>
+          
+          {loading ? (
+            <div className="loader">
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
               </div>
             </div>
-          ))}
+          ) : error ? (
+            <div className="alert alert-danger text-center" role="alert">
+              {error}
+            </div>
+          ) : teamMembers && teamMembers.length > 0 ? (
+            <div className="row g-4">
+              {teamMembers.map((member) => (
+                <div key={member.id} className="col-md-6 col-lg-4">
+                  <div className="team-card">
+                    <div className="member-image">
+                      <img 
+                        src={getImageUrl(member.image)} 
+                        alt={member.name}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = 'https://via.placeholder.com/300?text=Team+Member';
+                        }}
+                      />
+                    </div>
+                    <div className="member-info">
+                      <h3>{member.name}</h3>
+                      <p className="position">{member.position}</p>
+                      <p className="bio">{member.bio}</p>
+                      <div className="social-links">
+                        {member.linkedin_url && (
+                          <a href={member.linkedin_url} target="_blank" rel="noopener noreferrer">
+                            <i className="fab fa-linkedin"></i>
+                          </a>
+                        )}
+                        {member.github_url && (
+                          <a href={member.github_url} target="_blank" rel="noopener noreferrer">
+                            <i className="fab fa-github"></i>
+                          </a>
+                        )}
+                        {member.email && (
+                          <a href={`mailto:${member.email}`}>
+                            <i className="fas fa-envelope"></i>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="no-data">
+              <p>No team members available.</p>
+            </div>
+          )}
         </div>
-      </div>
+      </section>
 
-      {/* Call to Action */}
-      <div className="container py-5 text-center">
-        <h2 className="mb-4">Let's Bring Your Idea to Projects</h2>
-        <p className="lead mb-4">
-          Whether you're looking to build a website or create an e-commerce platform, we are here to help you.
-        </p>
-        <Link to="/contact" className="btn btn-primary btn-lg shadow-lg hover-btn">
-          Get in Touch
-        </Link>
-      </div>
-    </>
+      {/* CTA Section */}
+      <section className="cta-section">
+        <div className="container">
+          <div className="cta-content">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Let's discuss how we can help bring your vision to life</p>
+            <Link to="/contact" className="btn btn-light btn-lg">
+              Schedule a Consultation
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
