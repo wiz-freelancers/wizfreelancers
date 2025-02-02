@@ -1,0 +1,19 @@
+{
+  "name": "wizfreelancers",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd wiz && react-scripts start",
+    "build": "cd wiz && react-scripts build",
+    "test": "cd wiz && react-scripts test",
+    "eject": "cd wiz && react-scripts eject"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-scripts": "^5.0.1"
+  }
+}

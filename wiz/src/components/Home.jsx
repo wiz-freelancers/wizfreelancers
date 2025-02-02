@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 import freelanceImage from '../images/Freelance.jpeg';
 import './Home.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://wiz-freelancers-backend.onrender.com/api';
+const API_URL = process.env.NODE_ENV === 'development' 
+  ? 'http://127.0.0.1:8000/api'
+  : `${process.env.REACT_APP_API_URL}/api`;
+
+const MEDIA_BASE_URL = process.env.NODE_ENV === 'development'
+  ? 'http://127.0.0.1:8000'
+  : process.env.REACT_APP_API_URL;
 
 const Home = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -12,19 +18,27 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   const getImageUrl = (imagePath) => {
-    if (!imagePath) return '';
+    if (!imagePath) return 'https://placehold.co/300x300?text=No+Image';
     if (imagePath.startsWith('http')) return imagePath;
-    const cleanPath = imagePath.replace(/\/+/g, '/').replace(/^\//, '');
-    return `${API_URL}${cleanPath}`;
+    return `${MEDIA_BASE_URL}${imagePath}`;
   };
 
   useEffect(() => {
     let mounted = true;
     const fetchData = async () => {
       try {
+        const requestOptions = {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        };
+
         const [teamResponse, servicesResponse] = await Promise.all([
-          fetch(`${API_URL}/team/`),
-          fetch(`${API_URL}/services/`)
+          fetch(`${API_URL}/team/`, requestOptions),
+          fetch(`${API_URL}/services/`, requestOptions)
         ]);
 
         if (!teamResponse.ok || !servicesResponse.ok) {
@@ -40,6 +54,7 @@ const Home = () => {
           setLoading(false);
         }
       } catch (err) {
+        console.error('Error:', err);
         if (mounted) {
           setError('Failed to load data');
           setLoading(false);

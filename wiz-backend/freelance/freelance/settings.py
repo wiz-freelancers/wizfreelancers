@@ -14,6 +14,9 @@ from pathlib import Path
 import os
 from datetime import timedelta
 
+# Determine if we're in production
+IS_PRODUCTION = os.environ.get('RENDER', False)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,16 +27,57 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-+k&+q*l6b1&)ttmll$y9rcpp!tp*e7=3qntnhnl^u_38tez0g!'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+# Update DEBUG
+DEBUG = not IS_PRODUCTION
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'wiz-freelancers-backend.onrender.com',
-    '.onrender.com',  # Allow all subdomains of onrender.com
+# Update security settings based on environment
+if IS_PRODUCTION:
+    # Production settings
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    CSRF_TRUSTED_ORIGINS = [
+        "https://wizfreelancers.onrender.com",
+        "https://wiz-freelancers-backend.onrender.com"
+    ]
+    ALLOWED_HOSTS = [
+        'wiz-freelancers-backend.onrender.com',
+        'wizfreelancers.onrender.com'
+    ]
+else:
+    # Development settings
+    SECURE_SSL_REDIRECT = False
+    SECURE_PROXY_SSL_HEADER = None
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    ALLOWED_HOSTS = [
+        'localhost',
+        '127.0.0.1'
+    ]
+
+# Update CORS settings based on environment
+if IS_PRODUCTION:
+    CORS_ALLOWED_ORIGINS = [
+        "https://wizfreelancers.onrender.com"
+    ]
+    CORS_ALLOW_ALL_ORIGINS = False
+else:
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:3000",
+    ]
+    CORS_ALLOW_ALL_ORIGINS = True
+
+# Keep these CORS settings for both environments
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
 ]
-
 
 # Application definition
 
@@ -60,15 +104,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://wiz-freelancers.onrender.com",
-]
-
-# Add CORS settings
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'freelance.urls'
 
@@ -171,8 +206,3 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
-# Security settings for production
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
