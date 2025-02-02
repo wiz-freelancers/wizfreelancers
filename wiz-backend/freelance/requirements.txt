@@ -6,4 +6,5 @@ whitenoise
 dj-database-url
 psycopg2-binary
 pillow
-python-dotenv 
+python-dotenv
+djangorestframework-simplejwt  # Add this line
