@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
@@ -22,7 +23,12 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
+# Add a root view for the homepage
+def root_view(request):
+    return HttpResponse("Welcome to the API! Visit /api/ to explore the endpoints.")
+
 urlpatterns = [
+    path('', root_view),  # Serve a message at the root URL
     path('admin/', admin.site.urls),
     path('api/', include('wizb.urls')),  # Include your app URLs
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
