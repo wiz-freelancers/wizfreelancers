@@ -35,16 +35,16 @@ const Home = () => {
       </div>  
         <div className='card1'>
             <div className='minicard'>
-                <p className='number'>100+</p>
-                <p className='description'>Project Compleated</p>
-            </div>
-            <div className='minicard'>
                 <p className='number'>50+</p>
-                <p className='description'>Happy Client</p>
+                <p className='description'>Happy Clients</p>
             </div>
             <div className='minicard'>
-                <p className='number'>5+</p>
-                <p className='description'>Year Experience</p>
+                <p className='number'>3+</p>
+                <p className='description'>Years In Business</p>
+            </div>
+            <div className='minicard'>
+                <p className='number'>100+</p>
+                <p className='description'>Projects</p>
             </div>
             <div className='minicard'>
                 <p className='number'>24/7</p>
