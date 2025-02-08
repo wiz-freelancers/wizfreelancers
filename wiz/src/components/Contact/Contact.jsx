@@ -54,7 +54,7 @@ const Contact = () => {
             <label htmlFor="email">Your Email</label>
             <input
               autoComplete="off"
-              placeholder="Enter your email"
+              placeholder="Enter Your Email"
               type="email"
               id="email"
               name="from_email"
@@ -65,7 +65,7 @@ const Contact = () => {
             <label htmlFor="number11">Your Contact Number</label>
             <input
               autoComplete="off"
-              placeholder="enter yourr contact number"
+              placeholder="Enter Your Contact Number"
               type="tel"
               id="number11"
               name="Number1"
@@ -78,7 +78,7 @@ const Contact = () => {
             <label htmlFor="projectTitle11">Project Title</label>
             <input
               autoComplete="off"
-              placeholder="Enter project title"
+              placeholder="Enter Your Project Title"
               type="text"
               id="projectTitle11"
               name="projectTitle1"
@@ -89,7 +89,7 @@ const Contact = () => {
             <label htmlFor="projectBudget11">Project Budget</label>
             <input
               autoComplete="off"
-              placeholder="Enter your project budget"
+              placeholder="Enter Your Project Budget"
               type="number"
               id="projectBudget11"
               name="projectBudget1"
@@ -100,7 +100,7 @@ const Contact = () => {
             <label htmlFor="url11">UI/UX Reference URL</label>
             <input
               autoComplete="off"
-              placeholder="Enter your ui/ux url like"
+              placeholder="Enter Your UI/UX Reference URL"
               type="url"
               id="url11"
               name="url1"
@@ -112,7 +112,7 @@ const Contact = () => {
           <div className="projectDescription">
             <label htmlFor="projectDescription1">Project Description</label>
             <textarea
-              placeholder="Express your project description...."
+              placeholder="Write Your Project Description"
               name="projectDescription"
               id="projectDescription1"
               className="Desc"
@@ -122,7 +122,7 @@ const Contact = () => {
           <div className="message">
             <label htmlFor="message11">Your Message</label>
             <textarea
-              placeholder="Express Your Views.."
+              placeholder="Enter Your Message"
               name="message"
               id="message11"
               className="mess"
