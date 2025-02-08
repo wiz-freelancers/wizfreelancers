@@ -1,32 +1,28 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Nav from './components/Nav';
-import Home from './components/Home';
-import Services from './components/Services';
-import Contact from './components/Contact';
-import About from './components/About';
-import Footer from './components/Footer';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+
 import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
+import About from './components/About/About'
+import Services from './components/Services/Services'
+import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Nav />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <div className="App">
+      <BrowserRouter>
+        <Navbar/>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/About' element={<About/>}/>
+          <Route path='/Services' element={<Services/>}/>
+          <Route path='/Contact' element={<Contact/>}/>
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
+    </div>
   );
 }
-
+//<Navbar/>
 export default App;

@@ -1,0 +1,36 @@
+.navbar{
+    width:100%;
+    height:100px;
+    background-image:linear-gradient(to bottom,#d4edf7, white) ;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar-first{
+    width:20%;
+    height:80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.logo{
+    height:95%;
+    width:40%;
+    display:flex;
+}
+.logo img{
+    border-radius: 12%;
+}
+.navbar-first p{
+    font-size: medium;
+    font-weight: 1000;
+}
+.navbar-second{
+    width:40%;
+    height:95%;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}

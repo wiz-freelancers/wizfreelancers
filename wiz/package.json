@@ -1,33 +1,21 @@
 {
-  "name": "wiz",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
-    "@babel/core": "7.23.9",
-    "@babel/preset-react": "7.23.3",
-    "@fortawesome/fontawesome-free": "^6.5.1",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.3.2",
+    "@emailjs/browser": "^4.4.1",
+    "cra-template": "1.2.0",
     "emailjs-com": "^3.2.0",
-    "font-awesome": "^4.7.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.12.0",
-    "react-router-dom": "^6.22.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
+    "react-router-dom": "^7.1.5",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^4.2.4"
   },
   "scripts": {
-<<<<<<< HEAD
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-=======
-    "start": "set HTTPS=false && set SSL_CRT_FILE= && set SSL_KEY_FILE= && react-scripts start",
     "build": "react-scripts build",
->>>>>>> f267fe2 (some changes)
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

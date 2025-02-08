@@ -1,29 +1,4 @@
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.App {
+  text-align: center;
 }
 
-main {
-  flex: 1;
-}
-
-/* Only add padding to non-home pages */
-.page-container {
-  padding-top: 76px;
-}
-
-/* Remove padding for home page */
-.home-container {
-  margin-top: -76px; /* Negative margin to pull hero section up */
-}
-
-/* Ensure hero section content is visible */
-.hero-section {
-  padding-top: 76px; /* Add padding inside hero section instead */
-}
-
-/* For pages that need extra spacing */
-.page-container {
-  padding: 2rem 0;
-}
