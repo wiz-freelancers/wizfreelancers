@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaUsers, FaBusinessTime, FaProjectDiagram, FaHeadset, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { FaCode, FaReact, FaNodeJs, FaDatabase, FaArrowRight } from "react-icons/fa6";
-
 import { motion } from "framer-motion";
 import webDevelopmentImg from '../images/web-development.jpeg';
 import webDesigningImg from '../images/web-designing.jpeg';
@@ -11,6 +10,7 @@ import shivamImage from '../images/shivam-kumar.jpeg';
 import nishantImage from '../images/nishant-kumar.jpeg';
 import './Home.css';
 
+
 const Home = () => {
   return (
     <>
@@ -18,6 +18,7 @@ const Home = () => {
      <div className="hero-section d-flex align-items-center justify-content-center text-center text-white position-relative bg-dark" style={{ minHeight: "70vh", padding: "50px 0" }}>
         <div className="container position-relative z-1">
           <div className="row align-items-center">
+
             {/* Left Section - WIZ Freelancers Message */}
             <motion.div className="col-lg-6 text-lg-start text-center" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
               <h1 className="hero-title fw-bold display-4 text-uppercase text-shadow">Innovate. Connect. Thrive with WIZ Freelancers</h1>
@@ -46,6 +47,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+
       {/* Stats Section */}
       <div className="container py-5 text-center">
         <div className="row g-4">
@@ -84,7 +86,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Our Team Section */}
+   
       {/* Our Team Section */}
       <div className="container py-5">
         <h2 className="text-center fw-bold mb-4">Meet Our Team</h2>
