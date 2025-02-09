@@ -48,7 +48,7 @@ const Home = () => {
       skills: formData.skills,
       contact_no: formData.contact,
       experience: formData.experience,
-      resume: formData.resumeUrl, // URL of the resume link
+      resumeLink: formData.resumeUrl, // URL of the resume link
     };
 
     emailjs
@@ -71,7 +71,7 @@ const Home = () => {
             skills: "",
             contact: "",
             experience: "",
-            resumeUrl: "", // Reset the resume link field
+            resumeURL: "", // Reset the resume link field
           });
           setShowModal(false); // Close modal
         },
