@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUsers, FaBusinessTime, FaProjectDiagram, FaHeadset, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
-import { FaCode, FaReact, FaNodeJs, FaDatabase } from "react-icons/fa6";
+import { FaReact, FaNodeJs, FaDatabase, FaCode, FaLaptopCode, FaMobileAlt } from 'react-icons/fa';
+
 import { motion } from "framer-motion";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -272,12 +273,134 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Call to Action */}
-      <div className="container py-5 text-center">
-        <h2 className="fw-bold mb-3">Let's Bring Your Idea to Projects</h2>
-        <p className="lead mb-4">Whether you're looking to build a website or create an e-commerce platform, we are here to help you.</p>
-        <Link to="/contact" className="btn btn-primary btn-lg">Get in Touch</Link>
+{/* Call to Action */}
+<div
+  className="container-fluid py-5 position-relative"
+  style={{
+    background: "linear-gradient(to right, rgb(61, 92, 215), rgb(4, 45, 66))", // Darker gradient for more contrast
+    color: "#fff",
+  }}
+>
+  <div className="container text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className="row justify-content-center align-items-center"
+    >
+      {/* Left Icons */}
+      <div className="col-lg-4 d-flex justify-content-center">
+        <div className="d-flex flex-column align-items-center gap-4">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              repeat: Infinity,
+              duration: 3,
+              ease: "linear",
+            }}
+          >
+            <FaReact size={70} className="text-light" />
+          </motion.div>
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              repeat: Infinity,
+              duration: 3,
+              ease: "linear",
+              delay: 0.5,
+            }}
+          >
+            <FaNodeJs size={70} className="text-success" />
+          </motion.div>
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              repeat: Infinity,
+              duration: 3,
+              ease: "linear",
+              delay: 1,
+            }}
+          >
+            <FaDatabase size={70} className="text-warning" />
+          </motion.div>
+        </div>
       </div>
+
+      {/* Center Call to Action */}
+      <div className="col-lg-4">
+        <motion.div
+          initial={{ scale: 0.9 }}
+          whileHover={{ scale: 1 }}
+          className="p-5 rounded shadow-lg"
+          style={{
+            background: "rgba(255, 255, 255, 0.2)",
+            backdropFilter: "blur(12px)",
+            borderRadius: "15px",
+            boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)", // Shadow added for better pop
+          }}
+        >
+          <h2 className="fw-bold mb-4 text-uppercase">
+            Empowering Your Business with Expert Solutions
+          </h2>
+          <p className="lead mb-4">
+            At Wiz Freelancers, we are committed to transforming your ideas into innovative digital experiences. Let's build something amazing together!
+          </p>
+          <Link
+            to="/contact"
+            className="btn btn-light btn-lg rounded-pill shadow"
+            style={{
+              background: "linear-gradient(135deg, #f5af19, #ffc300)",
+              border: "none",
+            }}
+          >
+            Let's Get Started
+          </Link>
+        </motion.div>
+      </div>
+
+      {/* Right Icons */}
+      <div className="col-lg-4 d-flex justify-content-center">
+        <div className="d-flex flex-column align-items-center gap-4">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              repeat: Infinity,
+              duration: 3,
+              ease: "linear",
+              delay: 1.5,
+            }}
+          >
+            <FaCode size={70} className="text-primary" />
+          </motion.div>
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              repeat: Infinity,
+              duration: 3,
+              ease: "linear",
+              delay: 2,
+            }}
+          >
+            <FaLaptopCode size={70} className="text-danger" />
+          </motion.div>
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              repeat: Infinity,
+              duration: 3,
+              ease: "linear",
+              delay: 2.5,
+            }}
+          >
+            <FaMobileAlt size={70} className="text-info" />
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  </div>
+</div>
+
+
     </>
   );
 };
