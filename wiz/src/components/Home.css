@@ -38,7 +38,6 @@
   .tech-icons {
     display: flex;
     justify-content: center;
-    
     padding: 20px 0;
   }
   
@@ -65,7 +64,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap; /* Allow icons to wrap */
-    gap: 15px; /* Space out the icons */
+    gap: 10px; /* Space out the icons */
   }
   
   .tech-icons .icon {
