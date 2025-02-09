@@ -1,272 +1,163 @@
-/* General Container Styling */
-.about-container {
-  background: linear-gradient(135deg, #f0f8ff, #d3e0ea);
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  font-family: 'Poppins', sans-serif;
+/* Background */
+.about-wrapper {
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  padding: 60px 0;
+  color: rgb(0, 0, 0);
+  text-align: center;
 }
 
-/* Title Styling */
-.title-highlight {
+/* Neon Title */
+.neon-text {
   font-size: 3rem;
   font-weight: bold;
-  color: #2c3e50;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  animation: fadeIn 2s ease-in;
+  text-shadow: 0px 0px 12px rgba(0, 255, 255, 0.8);
 }
 
-/* About Text */
-.about-text {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #555;
-  text-align: justify;
-  font-style: italic;
-}
-
-/* Section Titles */
-.section-title {
-  color: #2c3e50;
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-/* Section Text */
-.section-text {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #444;
-}
-
-/* Service Item Styling */
-.service-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
-  padding: 15px 20px;
-  font-size: 1rem;
-  color: #333;
-  transition: background-color 0.3s;
-  border-radius: 5px;
-}
-
-.service-item:hover {
-  background-color: #f1f1f1;
-  cursor: pointer;
-}
-
-.service-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* Contact Section */
-.contact-section {
+/* Glassmorphism Effect with Equal Card Size */
+.info-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease-in-out;
+  height: 250px;  /* Ensuring equal height for all cards */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  background: #fff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-.contact-title {
-  font-size: 2rem;
-  color: #2c3e50;
-  font-weight: bold;
-  margin-bottom: 20px;
+.info-card:hover {
+  transform: translateY(-10px);
+}
+
+/* New Contact Section */
+.new-contact-section {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2));
+  padding: 40px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 15px rgba(255, 255, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  max-width: 900px;
+  width: 100%;
 }
 
 .contact-text {
+  flex: 1;
+}
+
+.contact-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px rgba(255, 255, 0, 0.8);
+}
+
+.contact-subtext {
   font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  color: rgba(0, 0, 0, 0.8);
 }
 
-.contact-details a {
-  color: #007bff;
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact-box:hover {
+  transform: translateY(-5px);
+}
+
+.contact-box a {
   text-decoration: none;
+  font-weight: bold;
+  color: black;
+  transition: color 0.3s ease-in-out;
 }
 
-.contact-details a:hover {
+.contact-box a:hover {
+  color: #000000;
   text-decoration: underline;
 }
 
-/* Animation Styles */
-.fade-in {
-  animation: fadeIn 2s ease-in;
+.contact-icon {
+  font-size: 1.8rem;
+  color: #8067f0;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.slide-in-left {
-  animation: slideInLeft 1.5s ease-out;
-}
-
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.slide-in-right {
-  animation: slideInRight 1.5s ease-out;
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.zoom-in {
-  animation: zoomIn 1.5s ease-in-out;
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .about-container {
-    padding: 30px;
-  }
-
-  .contact-section {
-    padding: 30px;
-  }
-
-  .service-item {
-    padding: 15px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .about-container {
-    padding: 20px;
-  }
-
-  .contact-section {
-    padding: 20px;
-  }
-
-  .service-item {
-    padding: 12px;
-  }
-
-  .about-text {
-    font-size: 1rem;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-  }
-}
-
+/* Mobile Responsive */
 @media (max-width: 768px) {
-  /* Mobile Layout */
-  .about-container {
-    padding: 15px;
-  }
-
-  .contact-section {
-    padding: 15px;
-  }
-
-  .service-item {
-    padding: 10px;
-    font-size: 0.95rem;
-  }
-
-  h3 {
-    font-size: 1.2rem;
-  }
-
-  .about-text {
-    font-size: 0.95rem;
-  }
-
-  /* Stack the mission/vision sections vertically */
-  .row {
+  .contact-content {
     flex-direction: column;
-    align-items: center;
+    text-align: center;
   }
 
-  /* Stack service and why choose us sections */
-  .col-md-6 {
-    width: 100%;
+  .contact-text {
     margin-bottom: 20px;
   }
 
-  .zoom-in {
-    animation: zoomIn 1.5s ease-in-out;
+  .contact-heading {
+    font-size: 1.8rem;
   }
 }
+/* Stylish Glowing Button */
+.contact-btn {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #ffeb3b, #ffd600);
+  color: black;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: 0.3s;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
 
-@media (max-width: 480px) {
-  /* Very Small Devices (phones in portrait) */
-  .about-container {
-    padding: 10px;
-  }
+/* Button Hover Effect */
+.contact-btn:hover {
+  background: linear-gradient(45deg, #ffd600, #ffeb3b);
+  box-shadow: 0px 0px 25px rgba(255, 235, 59, 1);
+  transform: scale(1.05);
+}
 
-  .contact-section {
-    padding: 10px;
-  }
+/* Button Click Effect */
+.contact-btn:active {
+  transform: scale(0.95);
+}
 
-  .service-item {
-    padding: 8px;
-    font-size: 0.9rem;
-  }
+/* Pulsing Glow Animation */
+@keyframes glowEffect {
+  0% { box-shadow: 0px 0px 15px rgba(255, 235, 59, 0.6); }
+  50% { box-shadow: 0px 0px 25px rgba(255, 235, 59, 1); }
+  100% { box-shadow: 0px 0px 15px rgba(255, 235, 59, 0.6); }
+}
 
-  h3 {
-    font-size: 1.1rem;
-  }
-
-  .about-text {
-    font-size: 0.9rem;
-  }
-
-  .fade-in {
-    animation: fadeIn 1.5s ease-in;
-  }
-
-  .slide-in-left,
-  .slide-in-right {
-    animation: none;
-  }
-
-  .zoom-in {
-    animation: none;
-  }
+.contact-btn {
+  animation: glowEffect 1.5s infinite alternate;
 }
