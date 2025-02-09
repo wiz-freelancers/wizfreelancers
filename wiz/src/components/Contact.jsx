@@ -1,10 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Contact.css"; // Importing CSS for further customization
 
 const Contact = () => {
   const form = useRef();
+  const [modalShow, setModalShow] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -19,12 +21,14 @@ const Contact = () => {
       .then(
         (result) => {
           console.log("SUCCESS!", result.text);
-          alert("Message has been sent successfully!");
+          setModalMessage("✅ Your message has been sent successfully! 🎉 We'll get back to you soon. 🚀");
+          setModalShow(true);
           e.target.reset();
         },
         (error) => {
           console.error("FAILED...", error.text);
-          alert("Message sending failed. Please try again.");
+          setModalMessage("❌ Oops! Something went wrong. Please try again later. 💡");
+          setModalShow(true);
         }
       );
   };
@@ -65,7 +69,7 @@ const Contact = () => {
             </div>
             <div className="col-md-6">
               <label className="form-label">UI/UX Reference URL</label>
-              <input type="url" name="url1" pattern="(https?:\/\/|www\.)[^\s]+" className="form-control" placeholder="Enter Your UI/UX Reference URL" required />
+              <input type="url" name="url1" pattern="(https?:\\/\\/|www\\.)[^\\s]+" className="form-control" placeholder="Enter Your UI/UX Reference URL" required />
             </div>
           </div>
 
@@ -82,6 +86,26 @@ const Contact = () => {
           </div>
         </form>
       </div>
+
+      {/* Bootstrap Modal */}
+      {modalShow && (
+        <div className="modal fade show d-block" tabIndex="-1">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">📢 Notification</h5>
+                <button type="button" className="btn-close" onClick={() => setModalShow(false)}></button>
+              </div>
+              <div className="modal-body text-center">
+                <p className="fw-bold text-success">{modalMessage}</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-success w-100" onClick={() => setModalShow(false)}>Awesome! 🎉</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
