@@ -14,14 +14,15 @@ import './Home.css';
 const Home = () => {
   return (
     <>
-      {/* Hero Section - Focused on WIZ Freelancers */}
-      <div className="hero-section d-flex align-items-center justify-content-center text-center text-white position-relative bg-dark" style={{ minHeight: "70vh", padding: "50px 0" }}>
+     {/* Hero Section - Focused on WIZ Freelancers */}
+     <div className="hero-section d-flex align-items-center justify-content-center text-center text-white position-relative bg-dark" style={{ minHeight: "70vh", padding: "50px 0" }}>
         <div className="container position-relative z-1">
           <div className="row align-items-center">
             {/* Left Section - WIZ Freelancers Message */}
             <motion.div className="col-lg-6 text-lg-start text-center" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
-              <h1 className="hero-title fw-bold display-4 text-uppercase text-shadow">Empowering Freelancers, Elevating Businesses</h1>
-              <p className="hero-subtitle fs-5 text-light mt-3">WIZ Freelancers connects expert developers, designers, and strategists to build high-quality digital solutions.</p>
+              <h1 className="hero-title fw-bold display-4 text-uppercase text-shadow">Innovate. Connect. Thrive with WIZ Freelancers</h1>
+              <p className="hero-subtitle fs-5 text-light mt-3">Empowering freelancers with limitless opportunities while delivering top-notch digital solutions for businesses worldwide.</p>
+              <p className="hero-subtitle fs-6 text-light">Join a vibrant network where innovation meets expertise, and success is a shared journey.</p>
               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.5 }} className="d-flex flex-column flex-md-row align-items-center gap-3 mt-3">
                 <Link to="/services" className="btn btn-primary btn-lg px-4 py-2 shadow-sm rounded-pill d-flex align-items-center gap-2 hover-effect">
                   Explore Our Services <FaArrowRight />
@@ -35,17 +36,16 @@ const Home = () => {
             {/* Right Section - Animated Tech Stack */}
             <motion.div className="col-lg-6 text-center mt-4 mt-lg-0" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
               <div className="tech-icons d-flex justify-content-center gap-4">
-                <motion.div whileHover={{ scale: 1.1 }}><FaCode size={60} className="text-primary" /></motion.div>
-                <motion.div whileHover={{ scale: 1.1 }}><FaReact size={60} className="text-info" /></motion.div>
-                <motion.div whileHover={{ scale: 1.1 }}><FaNodeJs size={60} className="text-success" /></motion.div>
-                <motion.div whileHover={{ scale: 1.1 }}><FaDatabase size={60} className="text-warning" /></motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear" }}><FaCode size={60} className="text-primary" /></motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 0.5 }}><FaReact size={60} className="text-info" /></motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1 }}><FaNodeJs size={60} className="text-success" /></motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1.5 }}><FaDatabase size={60} className="text-warning" /></motion.div>
               </div>
-              <p className="fs-6 text-light mt-3">Connecting top talent with businesses to build scalable, secure, and innovative applications.</p>
+              <p className="fs-6 text-light mt-3">Building a future where businesses and freelancers succeed together through innovation and collaboration.</p>
             </motion.div>
           </div>
         </div>
       </div>
-
       {/* Stats Section */}
       <div className="container py-5 text-center">
         <div className="row g-4">
