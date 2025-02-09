@@ -17,44 +17,24 @@ const Nav = () => {
     skills: "",
     contactNo: "",
     experience: "",
-    resume: null,
+    resumeURL: "", // Changed to accept Resume URL
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    const allowedTypes = [
-      "application/pdf",
-      "application/msword",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    ];
-    if (file && allowedTypes.includes(file.type) && file.size <= 2 * 1024 * 1024) {
-      setFormData({ ...formData, resume: file });
-    } else {
-      toast.error("Invalid file. Only PDF/DOC under 2MB allowed.");
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Manually enter the resume URL after uploading it to Google Drive or any cloud storage
-    let resumeLink = "No resume provided"; // Default if no resume is uploaded
-    if (formData.resume) {
-      // Replace this with the actual URL you get after uploading
-      resumeLink = "https://drive.google.com/yourfilelink"; // Example link
-    }
-
+    // Prepare the email data with the resume link
     const formToSend = {
       from_name: formData.name,
       from_email: formData.email,
       skills: formData.skills,
       contact_no: formData.contactNo,
       experience: formData.experience,
-      resume: resumeLink, // Include the resume link
+      resumeLink: formData.resumeURL, // The link the user provides
     };
 
     emailjs
@@ -77,7 +57,7 @@ const Nav = () => {
             skills: "",
             contactNo: "",
             experience: "",
-            resume: null,
+            resumeURL: "", // Reset the resume URL
           });
           setShowModal(false);
         },
@@ -166,8 +146,16 @@ const Nav = () => {
                     <textarea className="form-control" name="experience" placeholder="Briefly Describe Your Experience" value={formData.experience} onChange={handleChange} required></textarea>
                   </div>
                   <div className="mb-3">
-                    <label className="form-label">Resume</label>
-                    <input type="file" className="form-control" name="resume" onChange={handleFileChange} />
+                    <label className="form-label">Resume Link (Google Drive, Dropbox, etc.)</label>
+                    <input
+                      type="url"
+                      className="form-control"
+                      name="resumeURL"
+                      placeholder="Enter the link to your resume"
+                      value={formData.resumeURL}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <button type="submit" className="btn btn-success w-100">Submit</button>
                 </form>
