@@ -295,8 +295,8 @@ const Home = () => {
       <div className="container py-5">
         <h2 className="text-center fw-bold mb-4">Meet Our Team</h2>
         <div className="row g-4 justify-content-center">
-          {[{ img: shivamImage, name: 'Shivam Kumar', role: 'Web Developer', bio: 'Expert in system analysis, database design, and business solutions.', linkedin: 'https://www.linkedin.com/in/shivam-kumar-6801421ab/', gmail: 'shivamskr151@gmail.com' },
-            { img: nishantImage, name: 'Nishant Kumar', role: 'Web Developer', bio: 'Specializes in requirement gathering, system analysis, and project management.', linkedin: 'https://www.linkedin.com/in/nishant-kumar-8911262b2/', gmail: 'kumarnishantpradhan@gmail.com' }].map((teamMember, index) => (
+          {[{ img: shivamImage, name: 'Shivam Kumar', role: 'Full Stack Developer', bio: 'Shivam Kumar is a Full Stack Developer with expertise in requirement gathering, system analysis, and business solution implementation. Skilled in product management and ensuring quality control throughout project life cycles. Delivers innovative solutions on time, prioritizing customer satisfaction.', linkedin: 'https://www.linkedin.com/in/shivam-kumar-6801421ab/', gmail: 'shivamskr151@gmail.com' },
+            { img: nishantImage, name: 'Nishant Kumar', role: 'Web Developer', bio: 'Nishant Kumar is a skilled Web Developer with expertise in web application development, UI/UX design, and front-end technologies. Proficient in full-stack development, he optimizes web performance to enhance user experience. Delivers responsive, high-quality websites on time, ensuring client satisfaction.', linkedin: 'https://www.linkedin.com/in/nishant-kumar-8911262b2/', gmail: 'kumarnishantpradhan@gmail.com' }].map((teamMember, index) => (
               <div key={index} className="col-md-6 col-lg-4">
                 <div className="card shadow-lg border-0 h-100 text-center p-3 rounded-3 team-card">
                   <img src={teamMember.img} className="rounded-circle mx-auto d-block team-img" alt={teamMember.name} style={{ width: '120px', height: '120px', objectFit: 'cover' }} />
