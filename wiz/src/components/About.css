@@ -107,7 +107,7 @@
   color: #8067f0;
 }
 
-/* Mobile Responsive */
+/* Mobile Responsive - Adding spacing between the cards */
 @media (max-width: 768px) {
   .contact-content {
     flex-direction: column;
@@ -121,7 +121,18 @@
   .contact-heading {
     font-size: 1.8rem;
   }
+
+  /* Add spacing between cards on mobile */
+  .row.mt-5 {
+    margin-top: 20px;
+    gap: 20px; /* Adds space between the columns */
+  }
+
+  .info-card {
+    margin-bottom: 20px; /* Adds space between the cards */
+  }
 }
+
 /* Stylish Glowing Button */
 .contact-btn {
   display: inline-block;
