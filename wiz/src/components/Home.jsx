@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUsers, FaBusinessTime, FaProjectDiagram, FaHeadset, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 import { FaReact, FaNodeJs, FaDatabase, FaCode, FaLaptopCode, FaMobileAlt } from 'react-icons/fa';
-
+import { SiAngular, SiDjango, SiPhp } from 'react-icons/si'; // Import missing icons
 import { motion } from "framer-motion";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -117,12 +117,54 @@ const Home = () => {
               </motion.div>
             </motion.div>
             <motion.div className="col-lg-6 text-center mt-4 mt-lg-0" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
-              <div className="tech-icons d-flex justify-content-center gap-4">
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear" }}><FaCode size={60} className="text-primary" /></motion.div>
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 0.5 }}><FaReact size={60} className="text-info" /></motion.div>
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1 }}><FaNodeJs size={60} className="text-success" /></motion.div>
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1.5 }}><FaDatabase size={60} className="text-warning" /></motion.div>
-              </div>
+            <div className="tech-icons d-flex justify-content-center gap-4">
+  <motion.div
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
+  >
+    <FaCode size={60} className="text-primary" />
+  </motion.div>
+  <motion.div
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 0.5 }}
+  >
+    <FaReact size={60} className="text-info" />
+  </motion.div>
+  <motion.div
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1 }}
+  >
+    <FaNodeJs size={60} className="text-success" />
+  </motion.div>
+  <motion.div
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1.5 }}
+  >
+    <FaDatabase size={60} className="text-warning" />
+  </motion.div>
+  {/* Angular */}
+  <motion.div
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2 }}
+  >
+    <SiAngular size={60} className="text-danger" />
+  </motion.div>
+  {/* Django */}
+  <motion.div
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2.5 }}
+  >
+    <SiDjango size={60} className="text-success" />
+  </motion.div>
+  {/* PHP */}
+  <motion.div
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 3 }}
+  >
+    <SiPhp size={60} className="text-purple" />
+  </motion.div>
+</div>
+
               <p className="fs-6 text-light mt-3">Building a future where businesses and freelancers succeed together through innovation and collaboration.</p>
             </motion.div>
           </div>
