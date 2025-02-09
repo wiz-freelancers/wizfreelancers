@@ -20,12 +20,12 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     email: "",
     skills: "",
-    contactNo: "",
+    contact: "",
     experience: "",
-    resume: null,
+    resumeUrl: "",
   });
 
   // Function to open the modal
@@ -38,29 +38,17 @@ const Home = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    const allowedTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
-    if (file && allowedTypes.includes(file.type) && file.size <= 2 * 1024 * 1024) {
-      setFormData({ ...formData, resume: file });
-    } else {
-      toast.error("Invalid file. Only PDF/DOC under 2MB allowed.");
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Assume the resume is uploaded successfully, and you get the link
-    const resumeLink = "https://drive.google.com/yourfilelink"; // Replace with actual upload logic
-
     const formToSend = {
-      from_name: formData.name,
+      from_name: formData.fullName,
       from_email: formData.email,
       skills: formData.skills,
-      contact_no: formData.contactNo,
+      contact_no: formData.contact,
       experience: formData.experience,
-      resume: resumeLink,
+      resume: formData.resumeUrl, // URL of the resume link
     };
 
     emailjs
@@ -72,19 +60,19 @@ const Home = () => {
       )
       .then(
         () => {
-          setShowSuccessPopup(true); // Show custom popup
+          setShowSuccessPopup(true); // Show custom success popup
           setTimeout(() => {
             setShowSuccessPopup(false); // Auto-close popup after 5 seconds
           }, 5000);
 
           setFormData({
-            name: "",
+            fullName: "",
             email: "",
             skills: "",
-            contactNo: "",
+            contact: "",
             experience: "",
-            resume: null,
-          }); // Reset form fields
+            resumeUrl: "", // Reset the resume link field
+          });
           setShowModal(false); // Close modal
         },
         (error) => {
@@ -100,77 +88,80 @@ const Home = () => {
 
   return (
     <>
-      <div className="hero-section d-flex align-items-center justify-content-center text-center text-white position-relative bg-dark" style={{ minHeight: "70vh", padding: "50px 0" }}>
+      <div
+        className="hero-section d-flex align-items-center justify-content-center text-center text-white position-relative bg-dark"
+        style={{ minHeight: "70vh", padding: "50px 0" }}
+      >
         <div className="container position-relative z-1">
           <div className="row align-items-center">
-            <motion.div className="col-lg-6 text-lg-start text-center" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
-              <h1 className="hero-title fw-bold display-4 text-uppercase text-shadow">Innovate. Connect. Thrive with WIZ Freelancers</h1>
-              <p className="hero-subtitle fs-5 text-light mt-3">Empowering freelancers with limitless opportunities while delivering top-notch digital solutions for businesses worldwide.</p>
+            <motion.div
+              className="col-lg-6 text-lg-start text-center"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <h1 className="hero-title fw-bold display-4 text-uppercase text-shadow">
+                Innovate. Connect. Thrive with WIZ Freelancers
+              </h1>
+              <p className="hero-subtitle fs-5 text-light mt-3">
+                Empowering freelancers with limitless opportunities while delivering top-notch digital solutions for businesses worldwide.
+              </p>
               <p className="hero-subtitle fs-6 text-light">Join a vibrant network where innovation meets expertise, and success is a shared journey.</p>
-              <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.5 }} className="d-flex flex-column flex-md-row align-items-center gap-3 mt-3">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="d-flex flex-column flex-md-row align-items-center gap-3 mt-3"
+              >
                 <Link to="/services" className="btn btn-primary btn-lg px-4 py-2 shadow-sm rounded-pill d-flex align-items-center gap-2 hover-effect">
                   Explore Our Services <FaArrowRight />
                 </Link>
-                <button className="btn btn-outline-light btn-lg px-4 py-2 shadow-sm rounded-pill d-flex align-items-center gap-2 hover-effect" onClick={openModal}>
+                <button
+                  className="btn btn-outline-light btn-lg px-4 py-2 shadow-sm rounded-pill d-flex align-items-center gap-2 hover-effect"
+                  onClick={openModal}
+                >
                   Join as a Freelancer
                 </button>
               </motion.div>
             </motion.div>
-            <motion.div className="col-lg-6 text-center mt-4 mt-lg-0" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
-            <div className="tech-icons d-flex justify-content-center gap-4">
-  <motion.div
-    animate={{ rotate: 360 }}
-    transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-  >
-    <FaCode size={60} className="text-primary" />
-  </motion.div>
-  <motion.div
-    animate={{ rotate: 360 }}
-    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 0.5 }}
-  >
-    <FaReact size={60} className="text-info" />
-  </motion.div>
-  <motion.div
-    animate={{ rotate: 360 }}
-    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1 }}
-  >
-    <FaNodeJs size={60} className="text-success" />
-  </motion.div>
-  <motion.div
-    animate={{ rotate: 360 }}
-    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1.5 }}
-  >
-    <FaDatabase size={60} className="text-warning" />
-  </motion.div>
-  {/* Angular */}
-  <motion.div
-    animate={{ rotate: 360 }}
-    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2 }}
-  >
-    <SiAngular size={60} className="text-danger" />
-  </motion.div>
-  {/* Django */}
-  <motion.div
-    animate={{ rotate: 360 }}
-    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2.5 }}
-  >
-    <SiDjango size={60} className="text-success" />
-  </motion.div>
-  {/* PHP */}
-  <motion.div
-    animate={{ rotate: 360 }}
-    transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 3 }}
-  >
-    <SiPhp size={60} className="text-purple" />
-  </motion.div>
-</div>
-
-              <p className="fs-6 text-light mt-3">Building a future where businesses and freelancers succeed together through innovation and collaboration.</p>
+            <motion.div
+              className="col-lg-6 text-center mt-4 mt-lg-0"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <div className="tech-icons d-flex justify-content-center gap-4">
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear" }}>
+                  <FaCode size={60} className="text-primary" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 0.5 }}>
+                  <FaReact size={60} className="text-info" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1 }}>
+                  <FaNodeJs size={60} className="text-success" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1.5 }}>
+                  <FaDatabase size={60} className="text-warning" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2 }}>
+                  <SiAngular size={60} className="text-danger" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2.5 }}>
+                  <SiDjango size={60} className="text-success" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 3 }}>
+                  <SiPhp size={60} className="text-purple" />
+                </motion.div>
+              </div>
+              <p className="fs-6 text-light mt-3">
+                Building a future where businesses and freelancers succeed together through innovation and collaboration.
+              </p>
             </motion.div>
           </div>
         </div>
       </div>
 
+      {/* Freelancer Modal */}
       {showModal && (
         <div className="modal show d-block" tabIndex="-1" style={{ background: "rgba(0,0,0,0.5)" }}>
           <div className="modal-dialog">
@@ -183,29 +174,78 @@ const Home = () => {
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label className="form-label">Full Name</label>
-                    <input type="text" className="form-control" name="fullName" placeholder="Enter Your Name" value={formData.fullName} onChange={handleChange} required />
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="fullName"
+                      placeholder="Enter Your Name"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Email</label>
-                    <input type="email" className="form-control" name="email" placeholder="Enter Your Email" value={formData.email} onChange={handleChange} required />
+                    <input
+                      type="email"
+                      className="form-control"
+                      name="email"
+                      placeholder="Enter Your Email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Contact No.</label>
-                    <input type="tel" className="form-control" name="contact" placeholder="Your Contact Number" value={formData.contact} onChange={handleChange} required />
+                    <input
+                      type="tel"
+                      className="form-control"
+                      name="contact"
+                      placeholder="Your Contact Number"
+                      value={formData.contact}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Skills</label>
-                    <input type="text" className="form-control" name="skills" placeholder="Your Skills (e.g., Web Development)" value={formData.skills} onChange={handleChange} required />
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="skills"
+                      placeholder="Your Skills (e.g., Web Development)"
+                      value={formData.skills}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Experience</label>
-                    <textarea className="form-control" name="experience" placeholder="Briefly Describe Your Experience" value={formData.experience} onChange={handleChange} required></textarea>
+                    <textarea
+                      className="form-control"
+                      name="experience"
+                      placeholder="Briefly Describe Your Experience"
+                      value={formData.experience}
+                      onChange={handleChange}
+                      required
+                    ></textarea>
                   </div>
                   <div className="mb-3">
-                    <label className="form-label">Resume</label>
-                    <input type="url" className="form-control" name="resumeUrl" placeholder="Enter Link to Your Resume" value={formData.resumeUrl} onChange={handleChange} required />
+                    <label className="form-label">Resume Link</label>
+                    <input
+                      type="url"
+                      className="form-control"
+                      name="resumeUrl"
+                      placeholder="Enter Link to Your Resume"
+                      value={formData.resumeUrl}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
-                  <button type="submit" className="btn btn-success w-100">Submit</button>
+                  <button type="submit" className="btn btn-success w-100">
+                    Submit
+                  </button>
                 </form>
               </div>
             </div>
@@ -213,7 +253,7 @@ const Home = () => {
         </div>
       )}
 
-{/* Success Popup */}
+      {/* Success Popup */}
       {showSuccessPopup && (
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
