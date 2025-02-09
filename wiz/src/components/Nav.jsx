@@ -5,8 +5,8 @@ import logo from "../images/logo.jpeg";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { motion } from "framer-motion"; // Animation library
-import "./Nav.css"; // Import the custom CSS file for additional styling
+import { motion } from "framer-motion";
+import "./Nav.css";
 
 const Nav = () => {
   const [showModal, setShowModal] = useState(false);
@@ -26,7 +26,11 @@ const Nav = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    const allowedTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
     if (file && allowedTypes.includes(file.type) && file.size <= 2 * 1024 * 1024) {
       setFormData({ ...formData, resume: file });
     } else {
@@ -37,7 +41,12 @@ const Nav = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const resumeLink = "https://drive.google.com/yourfilelink"; // Replace with actual upload logic
+    // Manually enter the resume URL after uploading it to Google Drive or any cloud storage
+    let resumeLink = "No resume provided"; // Default if no resume is uploaded
+    if (formData.resume) {
+      // Replace this with the actual URL you get after uploading
+      resumeLink = "https://drive.google.com/yourfilelink"; // Example link
+    }
 
     const formToSend = {
       from_name: formData.name,
@@ -45,7 +54,7 @@ const Nav = () => {
       skills: formData.skills,
       contact_no: formData.contactNo,
       experience: formData.experience,
-      resume: resumeLink,
+      resume: resumeLink, // Include the resume link
     };
 
     emailjs
