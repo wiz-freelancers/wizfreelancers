@@ -131,28 +131,27 @@ const Home = () => {
               transition={{ duration: 1 }}
             >
               <div className="tech-icons d-flex justify-content-center gap-4">
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear" }}>
-                  <FaCode size={60} className="text-primary" />
-                </motion.div>
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 0.5 }}>
-                  <FaReact size={60} className="text-info" />
-                </motion.div>
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1 }}>
-                  <FaNodeJs size={60} className="text-success" />
-                </motion.div>
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1.5 }}>
-                  <FaDatabase size={60} className="text-warning" />
-                </motion.div>
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2 }}>
-                  <SiAngular size={60} className="text-danger" />
-                </motion.div>
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2.5 }}>
-                  <SiDjango size={60} className="text-success" />
-                </motion.div>
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 3 }}>
-                  <SiPhp size={60} className="text-purple" />
-                </motion.div>
-              </div>
+
+  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 0.5 }}>
+    <FaReact size={60} className="text-info icon" />
+  </motion.div>
+  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1 }}>
+    <FaNodeJs size={60} className="text-success icon" />
+  </motion.div>
+  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1.5 }}>
+    <FaDatabase size={60} className="text-warning icon" />
+  </motion.div>
+  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2 }}>
+    <SiAngular size={60} className="text-danger icon" />
+  </motion.div>
+  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2.5 }}>
+    <SiDjango size={60} className="text-success icon" />
+  </motion.div>
+  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 3 }}>
+    <SiPhp size={60} className="text-purple icon" />
+  </motion.div>
+</div>
+
               <p className="fs-6 text-light mt-3">
                 Building a future where businesses and freelancers succeed together through innovation and collaboration.
               </p>

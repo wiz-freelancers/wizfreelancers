@@ -60,6 +60,33 @@
     }
   }
   
+  /* Add this to your CSS file */
+.tech-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow icons to wrap */
+    gap: 15px; /* Space out the icons */
+  }
+  
+  .tech-icons .icon {
+    width: 60px; /* Set a default size */
+    height: 60px;
+  }
+  
+  @media (max-width: 768px) {
+    .tech-icons .icon {
+      width: 50px; /* Reduce size on smaller screens */
+      height: 50px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .tech-icons .icon {
+      width: 40px; /* Further reduce size for very small screens */
+      height: 40px;
+    }
+  }
+  
 
 /* Services Section */
 .container.py-5 {
