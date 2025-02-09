@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUsers, FaBusinessTime, FaProjectDiagram, FaHeadset, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { FaCode, FaReact, FaNodeJs, FaDatabase, FaArrowRight } from "react-icons/fa6";
+import { FaUsers, FaBusinessTime, FaProjectDiagram, FaHeadset, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
+import { FaCode, FaReact, FaNodeJs, FaDatabase } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import webDevelopmentImg from '../images/web-development.jpeg';
 import webDesigningImg from '../images/web-designing.jpeg';
@@ -10,15 +10,26 @@ import shivamImage from '../images/shivam-kumar.jpeg';
 import nishantImage from '../images/nishant-kumar.jpeg';
 import './Home.css';
 
-
 const Home = () => {
+  // State to manage the modal visibility
+  const [showModal, setShowModal] = useState(false);
+
+  // Function to open the modal
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
-     {/* Hero Section - Focused on WIZ Freelancers */}
-     <div className="hero-section d-flex align-items-center justify-content-center text-center text-white position-relative bg-dark" style={{ minHeight: "70vh", padding: "50px 0" }}>
+      {/* Hero Section - Focused on WIZ Freelancers */}
+      <div className="hero-section d-flex align-items-center justify-content-center text-center text-white position-relative bg-dark" style={{ minHeight: "70vh", padding: "50px 0" }}>
         <div className="container position-relative z-1">
           <div className="row align-items-center">
-
             {/* Left Section - WIZ Freelancers Message */}
             <motion.div className="col-lg-6 text-lg-start text-center" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
               <h1 className="hero-title fw-bold display-4 text-uppercase text-shadow">Innovate. Connect. Thrive with WIZ Freelancers</h1>
@@ -28,12 +39,12 @@ const Home = () => {
                 <Link to="/services" className="btn btn-primary btn-lg px-4 py-2 shadow-sm rounded-pill d-flex align-items-center gap-2 hover-effect">
                   Explore Our Services <FaArrowRight />
                 </Link>
-                <Link to="/contact" className="btn btn-outline-light btn-lg px-4 py-2 shadow-sm rounded-pill d-flex align-items-center gap-2 hover-effect">
+                <button className="btn btn-outline-light btn-lg px-4 py-2 shadow-sm rounded-pill d-flex align-items-center gap-2 hover-effect" onClick={openModal}>
                   Join as a Freelancer
-                </Link>
+                </button>
               </motion.div>
             </motion.div>
-            
+
             {/* Right Section - Animated Tech Stack */}
             <motion.div className="col-lg-6 text-center mt-4 mt-lg-0" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
               <div className="tech-icons d-flex justify-content-center gap-4">
@@ -47,6 +58,50 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* Freelancer Registration Modal */}
+      {showModal && (
+        <div className="modal show d-block" tabIndex="-1" style={{ background: "rgba(0,0,0,0.5)" }}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Join as a Freelancer</h5>
+                <button type="button" className="btn-close" onClick={closeModal}></button>
+              </div>
+              <div className="modal-body">
+                {/* Freelancer Registration Form */}
+                <form>
+                  <div className="mb-3">
+                    <label className="form-label">Full Name</label>
+                    <input type="text" className="form-control" placeholder="Enter Your Name" required />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Email</label>
+                    <input type="email" className="form-control" placeholder="Enter Your Email" required />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Contact No.</label>
+                    <input type="tel" className="form-control" placeholder="Your Contact Number" required />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Skills</label>
+                    <input type="text" className="form-control" placeholder="Your Skills (e.g., Web Development)" required />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Experience</label>
+                    <textarea className="form-control" placeholder="Briefly Describe Your Experience" required></textarea>
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Resume</label>
+                    <input type="file" className="form-control" />
+                  </div>
+                  <button type="submit" className="btn btn-success w-100">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Stats Section */}
       <div className="container py-5 text-center">
@@ -62,7 +117,7 @@ const Home = () => {
                   <p className="fs-5 text-muted">{stat.label}</p>
                 </div>
               </div>
-          ))}
+            ))}
         </div>
       </div>
 
@@ -82,11 +137,10 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-          ))}
+            ))}
         </div>
       </div>
 
-   
       {/* Our Team Section */}
       <div className="container py-5">
         <h2 className="text-center fw-bold mb-4">Meet Our Team</h2>
@@ -107,7 +161,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-          ))}
+            ))}
         </div>
       </div>
 
