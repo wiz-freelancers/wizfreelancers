@@ -1,0 +1,64 @@
+/* Contact Form Styling */
+.contact-container {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    padding: 50px 20px;
+  }
+  
+  .contact-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 650px;
+  }
+  
+  h2 {
+    font-weight: 700;
+  }
+  
+  .form-label {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .form-control {
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-control:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 8px rgba(37, 117, 252, 0.2);
+  }
+  
+  .contact-button {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .contact-button:hover {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contact-card {
+      padding: 30px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-card {
+      padding: 20px;
+    }
+  
+    .contact-button {
+      font-size: 16px;
+    }
+  }
+  

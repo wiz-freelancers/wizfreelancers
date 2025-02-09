@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Contact.css"; // Importing CSS for further customization
 
 const Contact = () => {
   const form = useRef();
@@ -29,8 +30,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
-      <div className="card shadow-lg p-5 w-100" style={{ maxWidth: "650px", borderRadius: "15px" }}>
+    <div className="contact-container d-flex justify-content-center align-items-center min-vh-100">
+      <div className="card contact-card shadow-lg p-5 w-100">
         <h2 className="text-center text-primary mb-4">📩 Get In Touch!</h2>
         <p className="text-center text-muted mb-4">We're excited to collaborate with you. Fill out the form below, and we'll be in touch shortly!</p>
         
@@ -77,7 +78,7 @@ const Contact = () => {
             <textarea name="message" className="form-control" placeholder="Enter Your Message" rows="3"></textarea>
           </div>
           <div className="text-center">
-            <button type="submit" className="btn btn-primary w-100 py-2 fw-bold" style={{ borderRadius: "10px" }}>Send Message 🚀</button>
+            <button type="submit" className="btn btn-primary w-100 py-2 fw-bold contact-button">Send Message 🚀</button>
           </div>
         </form>
       </div>
