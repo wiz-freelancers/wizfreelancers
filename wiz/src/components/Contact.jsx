@@ -1,134 +1,86 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import emailjs from 'emailjs-com';
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    mobile: '',
-    projectTitle: '',
-    projectDescription: '',
-    budget: '',
-    uiUxUrl: '',
-    message: ''
-  });
+  const form = useRef();
 
-  const [showModal, setShowModal] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  const handleSubmit = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
 
-    try {
-      const response = await emailjs.send(
-        'service_c7ee7cq',
-        'template_sxm9mmn',
-        formData,
-        'pZnTmkqe6DSiHnIg-'
+    emailjs
+      .sendForm(
+        "service_oikq8fd", // Replace with your EmailJS Service ID
+        "template_gei2446", // Replace with your EmailJS Template ID
+        form.current,
+        "pZnTmkqe6DSiHnIg-" // Replace with your EmailJS Public Key
+      )
+      .then(
+        (result) => {
+          console.log("SUCCESS!", result.text);
+          alert("Message has been sent successfully!");
+          e.target.reset();
+        },
+        (error) => {
+          console.error("FAILED...", error.text);
+          alert("Message sending failed. Please try again.");
+        }
       );
-
-      if (response.status === 200) {
-        setShowModal(true);
-        setFormData({
-          name: '',
-          email: '',
-          mobile: '',
-          projectTitle: '',
-          projectDescription: '',
-          budget: '',
-          uiUxUrl: '',
-          message: ''
-        });
-      } else {
-        alert('Error: Unable to send email.');
-      }
-    } catch (error) {
-      console.error('Error sending the email:', error);
-      alert('An error occurred while sending the email.');
-    }
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-md-8 mx-auto">
-          <h1 className="text-center mb-4" style={{ color: '#007bff' }}>Contact Us</h1>
-          <p className="text-center mb-5" style={{ color: '#28a745' }}>Please fill out the form below for project inquiries, collaborations, or to discuss your ideas with us!</p>
-          
-          <form onSubmit={handleSubmit}>
-            {[
-              { id: 'name', label: 'Your Name', type: 'text', placeholder: 'Enter your name' },
-              { id: 'email', label: 'Your Email', type: 'email', placeholder: 'Enter your email' },
-              { id: 'mobile', label: 'Mobile Number', type: 'text', placeholder: 'Enter your mobile number' },
-              { id: 'projectTitle', label: 'Project Title', type: 'text', placeholder: 'Enter the title of your project' },
-              { id: 'budget', label: 'Project Budget', type: 'text', placeholder: 'Enter your project budget' },
-              { id: 'uiUxUrl', label: 'UI/UX Reference URL', type: 'url', placeholder: 'Enter a link to UI/UX reference' },
-              { id: 'projectDescription', label: 'Project Description', type: 'textarea', placeholder: 'Describe your project in detail' },
-              { id: 'message', label: 'Your Message', type: 'textarea', placeholder: 'Enter your message' },
-            ].map(({ id, label, type, placeholder }) => (
-              <div className="mb-3" key={id}>
-                <label htmlFor={id} className="form-label" style={{ color: '#17a2b8' }}>{label}</label>
-                {type === 'textarea' ? (
-                  <textarea
-                    className="form-control border-info"
-                    id={id}
-                    name={id}
-                    value={formData[id]}
-                    onChange={handleChange}
-                    rows="4"
-                    placeholder={placeholder}
-                    required
-                  ></textarea>
-                ) : (
-                  <input
-                    type={type}
-                    className="form-control border-primary"
-                    id={id}
-                    name={id}
-                    value={formData[id]}
-                    onChange={handleChange}
-                    placeholder={placeholder}
-                    required
-                  />
-                )}
-              </div>
-            ))}
-
-            <div className="text-center">
-              <button type="submit" className="btn btn-success">Send Message</button>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100 bg-light">
+      <div className="card shadow-lg p-5 w-100" style={{ maxWidth: "650px", borderRadius: "15px" }}>
+        <h2 className="text-center text-primary mb-4">📩 Get In Touch!</h2>
+        <p className="text-center text-muted mb-4">We're excited to collaborate with you. Fill out the form below, and we'll be in touch shortly!</p>
+        
+        <form ref={form} onSubmit={sendEmail} className="needs-validation" noValidate>
+          <div className="row g-3">
+            <div className="col-md-6">
+              <label className="form-label">Your Name</label>
+              <input type="text" name="from_name" className="form-control" placeholder="Enter Your Name" required />
             </div>
-          </form>
-        </div>
-      </div>
-
-      {showModal && (
-        <div className="modal fade show" tabIndex="-1" style={{ display: 'block' }} role="dialog">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header" style={{ backgroundColor: '#007bff', color: 'white' }}>
-                <h5 className="modal-title">Thank You!</h5>
-                <button type="button" className="close" onClick={() => setShowModal(false)} aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body" style={{ backgroundColor: '#e9ecef' }}>
-                <p>Your message has been successfully submitted. We will get back to you soon!</p>
-              </div>
-              <div className="modal-footer" style={{ backgroundColor: '#f8f9fa' }}>
-                <button type="button" className="btn btn-primary" onClick={() => setShowModal(false)}>Close</button>
-              </div>
+            <div className="col-md-6">
+              <label className="form-label">Your Email</label>
+              <input type="email" name="from_email" className="form-control" placeholder="Enter Your Email" required />
             </div>
           </div>
-        </div>
-      )}
+
+          <div className="row g-3 mt-2">
+            <div className="col-md-6">
+              <label className="form-label">Your Contact Number</label>
+              <input type="tel" name="Number1" pattern="[0-9]{10}" className="form-control" placeholder="Enter Your Contact Number" required />
+            </div>
+            <div className="col-md-6">
+              <label className="form-label">Project Title</label>
+              <input type="text" name="projectTitle1" className="form-control" placeholder="Enter Your Project Title" required />
+            </div>
+          </div>
+
+          <div className="row g-3 mt-2">
+            <div className="col-md-6">
+              <label className="form-label">Project Budget</label>
+              <input type="number" name="projectBudget1" className="form-control" placeholder="Enter Your Project Budget" required />
+            </div>
+            <div className="col-md-6">
+              <label className="form-label">UI/UX Reference URL</label>
+              <input type="url" name="url1" pattern="(https?:\/\/|www\.)[^\s]+" className="form-control" placeholder="Enter Your UI/UX Reference URL" required />
+            </div>
+          </div>
+
+          <div className="mb-3 mt-3">
+            <label className="form-label">Project Description</label>
+            <textarea name="projectDescription" className="form-control" placeholder="Enter Your Project Description" rows="3" required></textarea>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Your Message</label>
+            <textarea name="message" className="form-control" placeholder="Enter Your Message" rows="3"></textarea>
+          </div>
+          <div className="text-center">
+            <button type="submit" className="btn btn-primary w-100 py-2 fw-bold" style={{ borderRadius: "10px" }}>Send Message 🚀</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
