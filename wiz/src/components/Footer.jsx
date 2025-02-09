@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure you have Bootstrap imported
+import { FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -7,15 +8,33 @@ const Footer = () => {
       <div className="container">
         <div className="row">
           <div className="col-12 text-center">
-            <p className="mb-0">&copy; 2025 Wiz Freelancers. All Rights Reserved.</p>
-            <p className="small">
-              <a href="https://www.instagram.com/wizfreelancers/profilecard/?igsh=MWZkenFvZHVmODV4YQ==" className="text-white mx-2" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-instagram"></i> Instagram
+            <p className="mb-2 fw-bold">&copy; 2025 Wiz Freelancers. All Rights Reserved.</p>
+            <div className="d-flex justify-content-center align-items-center gap-3">
+              <a
+                href="https://www.instagram.com/wizfreelancers/profilecard/?igsh=MWZkenFvZHVmODV4YQ=="
+                className="text-white text-decoration-none"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram size={20} className="me-1" /> Instagram
               </a>
-              <a href="https://www.linkedin.com/company/wiz-freelancers/" className="text-white mx-2" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-linkedin"></i> LinkedIn
+              <a
+                href="https://www.linkedin.com/company/wiz-freelancers/"
+                className="text-white text-decoration-none"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin size={20} className="me-1" /> LinkedIn
               </a>
-            </p>
+              <a
+                href="https://wa.me/917079018110"
+                className="text-white text-decoration-none"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp size={20} className="me-1" /> WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </div>
