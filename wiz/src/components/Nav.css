@@ -1,0 +1,32 @@
+.modal-content {
+    border-radius: 15px;
+  }
+  
+  .modal-body form .form-control {
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .btn-close {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #000;
+  }
+  
+  @media (max-width: 576px) {
+    .modal-dialog {
+      max-width: 90%;
+    }
+  
+    .modal-body form {
+      padding: 15px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .modal-dialog {
+      max-width: 600px;
+    }
+  }
+  

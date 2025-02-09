@@ -6,6 +6,7 @@ import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion"; // Animation library
+import "./Nav.css"; // Import the custom CSS file for additional styling
 
 const Nav = () => {
   const [showModal, setShowModal] = useState(false);
@@ -36,7 +37,6 @@ const Nav = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Assume the resume is uploaded successfully, and you get the link
     const resumeLink = "https://drive.google.com/yourfilelink"; // Replace with actual upload logic
 
     const formToSend = {
@@ -57,9 +57,9 @@ const Nav = () => {
       )
       .then(
         () => {
-          setShowSuccessPopup(true); // Show custom popup
+          setShowSuccessPopup(true);
           setTimeout(() => {
-            setShowSuccessPopup(false); // Auto-close popup after 5 seconds
+            setShowSuccessPopup(false);
           }, 5000);
 
           setFormData({
@@ -69,8 +69,8 @@ const Nav = () => {
             contactNo: "",
             experience: "",
             resume: null,
-          }); // Reset form fields
-          setShowModal(false); // Close modal
+          });
+          setShowModal(false);
         },
         (error) => {
           console.error("FAILED...", error);
@@ -128,7 +128,7 @@ const Nav = () => {
       {/* Freelancer Registration Modal */}
       {showModal && (
         <div className="modal show d-block" tabIndex="-1" style={{ background: "rgba(0,0,0,0.5)" }}>
-          <div className="modal-dialog">
+          <div className="modal-dialog modal-lg">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">Join as a Freelancer</h5>
