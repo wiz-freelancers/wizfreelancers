@@ -272,24 +272,24 @@ const Home = () => {
       </div>
 
       {/* Services Section */}
-      <div className="container py-5">
-        <h2 className="text-center fw-bold mb-4">Our Services</h2>
-        <div className="row g-4">
-          {[{ img: webDevelopmentImg, title: 'Web Development', text: 'Building scalable, secure, and dynamic websites.' },
-            { img: webDesigningImg, title: 'Web Designing', text: 'Creating beautiful, responsive designs.' },
-            { img: ecommerceDevelopmentImg, title: 'E-commerce Development', text: 'Building secure, user-friendly online stores.' }].map((service, index) => (
-              <div key={index} className="col-md-6 col-lg-4">
-                <div className="card shadow border-0 h-100">
-                  <img src={service.img} className="card-img-top" alt={service.title} />
-                  <div className="card-body text-center">
-                    <h5 className="card-title fw-bold">{service.title}</h5>
-                    <p className="card-text">{service.text}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+<div className="container py-5">
+  <h2 className="text-center fw-bold mb-4">Our Expertise</h2>
+  <div className="row g-4">
+    {[{ img: webDevelopmentImg, title: 'Bespoke Web Development', text: 'Crafting custom-built, cutting-edge websites that drive performance and meet your business goals.' },
+      { img: webDesigningImg, title: 'Innovative Web Design', text: 'Creating visually striking, intuitive designs that elevate user experience and brand identity.' },
+      { img: ecommerceDevelopmentImg, title: 'Next-Gen E-commerce Solutions', text: 'Designing seamless, secure, and scalable online stores to help you thrive in the digital marketplace.' }].map((service, index) => (
+        <div key={index} className="col-md-6 col-lg-4">
+          <div className="card shadow border-0 h-100">
+            <img src={service.img} className="card-img-top" alt={service.title} />
+            <div className="card-body text-center">
+              <h5 className="card-title fw-bold">{service.title}</h5>
+              <p className="card-text">{service.text}</p>
+            </div>
+          </div>
         </div>
-      </div>
+      ))}
+  </div>
+</div>
 
       {/* Our Team Section */}
       <div className="container py-5">
