@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { FaUsers, FaBusinessTime, FaProjectDiagram, FaHeadset, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 import { FaCode, FaReact, FaNodeJs, FaDatabase } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import emailjs from 'emailjs-com';
 import webDevelopmentImg from '../images/web-development.jpeg';
 import webDesigningImg from '../images/web-designing.jpeg';
 import ecommerceDevelopmentImg from '../images/ecommerce-development.jpeg';
@@ -10,27 +13,94 @@ import shivamImage from '../images/shivam-kumar.jpeg';
 import nishantImage from '../images/nishant-kumar.jpeg';
 import './Home.css';
 
+
 const Home = () => {
-  // State to manage the modal visibility
   const [showModal, setShowModal] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    skills: "",
+    contactNo: "",
+    experience: "",
+    resume: null,
+  });
 
   // Function to open the modal
-  const openModal = () => {
-    setShowModal(true);
-  };
+  const openModal = () => setShowModal(true);
 
   // Function to close the modal
-  const closeModal = () => {
-    setShowModal(false);
+  const closeModal = () => setShowModal(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    const allowedTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+    if (file && allowedTypes.includes(file.type) && file.size <= 2 * 1024 * 1024) {
+      setFormData({ ...formData, resume: file });
+    } else {
+      toast.error("Invalid file. Only PDF/DOC under 2MB allowed.");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Assume the resume is uploaded successfully, and you get the link
+    const resumeLink = "https://drive.google.com/yourfilelink"; // Replace with actual upload logic
+
+    const formToSend = {
+      from_name: formData.name,
+      from_email: formData.email,
+      skills: formData.skills,
+      contact_no: formData.contactNo,
+      experience: formData.experience,
+      resume: resumeLink,
+    };
+
+    emailjs
+      .send(
+        "service_m90b4fj", // Replace with your EmailJS service ID
+        "template_gfz3k8k", // Replace with your EmailJS template ID
+        formToSend,
+        "pZnTmkqe6DSiHnIg-" // Replace with your EmailJS user/public key
+      )
+      .then(
+        () => {
+          setShowSuccessPopup(true); // Show custom popup
+          setTimeout(() => {
+            setShowSuccessPopup(false); // Auto-close popup after 5 seconds
+          }, 5000);
+
+          setFormData({
+            name: "",
+            email: "",
+            skills: "",
+            contactNo: "",
+            experience: "",
+            resume: null,
+          }); // Reset form fields
+          setShowModal(false); // Close modal
+        },
+        (error) => {
+          console.error("FAILED...", error);
+          toast.error("Error submitting form. Please try again. 😞", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 5000,
+            theme: "colored",
+          });
+        }
+      );
   };
 
   return (
     <>
-      {/* Hero Section - Focused on WIZ Freelancers */}
       <div className="hero-section d-flex align-items-center justify-content-center text-center text-white position-relative bg-dark" style={{ minHeight: "70vh", padding: "50px 0" }}>
         <div className="container position-relative z-1">
           <div className="row align-items-center">
-            {/* Left Section - WIZ Freelancers Message */}
             <motion.div className="col-lg-6 text-lg-start text-center" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
               <h1 className="hero-title fw-bold display-4 text-uppercase text-shadow">Innovate. Connect. Thrive with WIZ Freelancers</h1>
               <p className="hero-subtitle fs-5 text-light mt-3">Empowering freelancers with limitless opportunities while delivering top-notch digital solutions for businesses worldwide.</p>
@@ -44,8 +114,6 @@ const Home = () => {
                 </button>
               </motion.div>
             </motion.div>
-
-            {/* Right Section - Animated Tech Stack */}
             <motion.div className="col-lg-6 text-center mt-4 mt-lg-0" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
               <div className="tech-icons d-flex justify-content-center gap-4">
                 <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear" }}><FaCode size={60} className="text-primary" /></motion.div>
@@ -59,7 +127,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Freelancer Registration Modal */}
       {showModal && (
         <div className="modal show d-block" tabIndex="-1" style={{ background: "rgba(0,0,0,0.5)" }}>
           <div className="modal-dialog">
@@ -69,31 +136,30 @@ const Home = () => {
                 <button type="button" className="btn-close" onClick={closeModal}></button>
               </div>
               <div className="modal-body">
-                {/* Freelancer Registration Form */}
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label className="form-label">Full Name</label>
-                    <input type="text" className="form-control" placeholder="Enter Your Name" required />
+                    <input type="text" className="form-control" name="fullName" placeholder="Enter Your Name" value={formData.fullName} onChange={handleChange} required />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Email</label>
-                    <input type="email" className="form-control" placeholder="Enter Your Email" required />
+                    <input type="email" className="form-control" name="email" placeholder="Enter Your Email" value={formData.email} onChange={handleChange} required />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Contact No.</label>
-                    <input type="tel" className="form-control" placeholder="Your Contact Number" required />
+                    <input type="tel" className="form-control" name="contact" placeholder="Your Contact Number" value={formData.contact} onChange={handleChange} required />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Skills</label>
-                    <input type="text" className="form-control" placeholder="Your Skills (e.g., Web Development)" required />
+                    <input type="text" className="form-control" name="skills" placeholder="Your Skills (e.g., Web Development)" value={formData.skills} onChange={handleChange} required />
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Experience</label>
-                    <textarea className="form-control" placeholder="Briefly Describe Your Experience" required></textarea>
+                    <textarea className="form-control" name="experience" placeholder="Briefly Describe Your Experience" value={formData.experience} onChange={handleChange} required></textarea>
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Resume</label>
-                    <input type="file" className="form-control" />
+                    <input type="url" className="form-control" name="resumeUrl" placeholder="Enter Link to Your Resume" value={formData.resumeUrl} onChange={handleChange} required />
                   </div>
                   <button type="submit" className="btn btn-success w-100">Submit</button>
                 </form>
@@ -102,6 +168,8 @@ const Home = () => {
           </div>
         </div>
       )}
+
+      <ToastContainer />
 
       {/* Stats Section */}
       <div className="container py-5 text-center">
