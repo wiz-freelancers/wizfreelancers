@@ -12,6 +12,7 @@ import ecommerceDevelopmentImg from '../images/ecommerce-development.jpeg';
 import shivamImage from '../images/shivam-kumar.jpeg';
 import nishantImage from '../images/nishant-kumar.jpeg';
 import './Home.css';
+import { FaCheckCircle } from 'react-icons/fa';
 
 
 const Home = () => {
@@ -167,6 +168,44 @@ const Home = () => {
             </div>
           </div>
         </div>
+      )}
+
+{/* Success Popup */}
+      {showSuccessPopup && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          style={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            background: "#ffffff",
+            padding: "20px",
+            borderRadius: "15px",
+            boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)",
+            textAlign: "center",
+            zIndex: 1050,
+          }}
+        >
+          <h4 style={{ color: "#2ecc71" }}>🎉 Awesome!</h4>
+          <p>Thank you for joining as a Freelancer! 🚀</p>
+          <button
+            style={{
+              padding: "10px 20px",
+              background: "#3498db",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              marginTop: "10px",
+            }}
+            onClick={() => setShowSuccessPopup(false)}
+          >
+            Close
+          </button>
+        </motion.div>
       )}
 
       <ToastContainer />
