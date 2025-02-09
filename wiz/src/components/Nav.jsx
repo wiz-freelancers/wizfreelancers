@@ -5,9 +5,11 @@ import logo from "../images/logo.jpeg";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion"; // Animation library
 
-const Nav = ({ openModal }) => {
+const Nav = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,14 +24,20 @@ const Nav = ({ openModal }) => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, resume: e.target.files[0] });
+    const file = e.target.files[0];
+    const allowedTypes = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+    if (file && allowedTypes.includes(file.type) && file.size <= 2 * 1024 * 1024) {
+      setFormData({ ...formData, resume: file });
+    } else {
+      toast.error("Invalid file. Only PDF/DOC under 2MB allowed.");
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Example: Assume the resume is uploaded to Google Drive and you have the link
-    const resumeLink = "https://drive.google.com/yourfilelink";  // Replace with actual public link
+    // Assume the resume is uploaded successfully, and you get the link
+    const resumeLink = "https://drive.google.com/yourfilelink"; // Replace with actual upload logic
 
     const formToSend = {
       from_name: formData.name,
@@ -42,20 +50,18 @@ const Nav = ({ openModal }) => {
 
     emailjs
       .send(
-        "service_m90b4fj", 
-        "template_gfz3k8k", 
+        "service_m90b4fj", // Replace with your EmailJS service ID
+        "template_gfz3k8k", // Replace with your EmailJS template ID
         formToSend,
-        "pZnTmkqe6DSiHnIg-" 
+        "pZnTmkqe6DSiHnIg-" // Replace with your EmailJS user/public key
       )
       .then(
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          toast.success("Form submitted successfully! 🎉", {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 5000,
-            theme: "colored",
-          });
-          setShowModal(false); // Close modal after submission
+        () => {
+          setShowSuccessPopup(true); // Show custom popup
+          setTimeout(() => {
+            setShowSuccessPopup(false); // Auto-close popup after 5 seconds
+          }, 5000);
+
           setFormData({
             name: "",
             email: "",
@@ -64,9 +70,10 @@ const Nav = ({ openModal }) => {
             experience: "",
             resume: null,
           }); // Reset form fields
+          setShowModal(false); // Close modal
         },
         (error) => {
-          console.log("FAILED...", error);
+          console.error("FAILED...", error);
           toast.error("Error submitting form. Please try again. 😞", {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 5000,
@@ -159,6 +166,44 @@ const Nav = ({ openModal }) => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Success Popup */}
+      {showSuccessPopup && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          style={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            background: "#ffffff",
+            padding: "20px",
+            borderRadius: "15px",
+            boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)",
+            textAlign: "center",
+            zIndex: 1050,
+          }}
+        >
+          <h4 style={{ color: "#2ecc71" }}>🎉 Awesome!</h4>
+          <p>Thank you for joining as a Freelancer! 🚀</p>
+          <button
+            style={{
+              padding: "10px 20px",
+              background: "#3498db",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              marginTop: "10px",
+            }}
+            onClick={() => setShowSuccessPopup(false)}
+          >
+            Close
+          </button>
+        </motion.div>
       )}
 
       {/* ToastContainer for notifications */}
