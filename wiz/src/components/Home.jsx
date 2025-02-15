@@ -13,7 +13,7 @@ import ecommerceDevelopmentImg from '../images/ecommerce-development.jpeg';
 import shivamImage from '../images/shivam-kumar.jpeg';
 import nishantImage from '../images/nishant-kumar.jpeg';
 import './Home.css';
-import { FaCheckCircle } from 'react-icons/fa';
+
 
 
 const Home = () => {
@@ -132,25 +132,25 @@ const Home = () => {
             >
               <div className="tech-icons d-flex justify-content-center gap-4">
 
-  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 0.5 }}>
-    <FaReact size={60} className="text-info icon" />
-  </motion.div>
-  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1 }}>
-    <FaNodeJs size={60} className="text-success icon" />
-  </motion.div>
-  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1.5 }}>
-    <FaDatabase size={60} className="text-warning icon" />
-  </motion.div>
-  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2 }}>
-    <SiAngular size={60} className="text-danger icon" />
-  </motion.div>
-  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2.5 }}>
-    <SiDjango size={60} className="text-success icon" />
-  </motion.div>
-  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 3 }}>
-    <SiPhp size={60} className="text-purple icon" />
-  </motion.div>
-</div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 0.5 }}>
+                  <FaReact size={60} className="text-info icon" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1 }}>
+                  <FaNodeJs size={60} className="text-success icon" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 1.5 }}>
+                  <FaDatabase size={60} className="text-warning icon" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2 }}>
+                  <SiAngular size={60} className="text-danger icon" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 2.5 }}>
+                  <SiDjango size={60} className="text-success icon" />
+                </motion.div>
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3, ease: "linear", delay: 3 }}>
+                  <SiPhp size={60} className="text-purple icon" />
+                </motion.div>
+              </div>
 
               <p className="fs-6 text-light mt-3">
                 Building a future where businesses and freelancers succeed together through innovation and collaboration.
@@ -296,190 +296,190 @@ const Home = () => {
       <div className="container py-5 text-center">
         <div className="row g-4">
           {[{ icon: <FaUsers size={50} className="text-primary" />, number: '50+', label: 'Happy Clients' },
-            { icon: <FaBusinessTime size={50} className="text-primary" />, number: '2+', label: 'Years In Business' },
-            { icon: <FaProjectDiagram size={50} className="text-primary" />, number: '100+', label: 'Projects' },
-            { icon: <FaHeadset size={50} className="text-primary" />, number: '24/7', label: 'Available Support' }].map((stat, index) => (
-              <div key={index} className="col-6 col-md-3">
-                <div className="d-flex flex-column align-items-center">
-                  {stat.icon}
-                  <h2 className="fw-bold display-5 mt-2">{stat.number}</h2>
-                  <p className="fs-5 text-muted">{stat.label}</p>
-                </div>
+          { icon: <FaBusinessTime size={50} className="text-primary" />, number: '2+', label: 'Years In Business' },
+          { icon: <FaProjectDiagram size={50} className="text-primary" />, number: '100+', label: 'Projects' },
+          { icon: <FaHeadset size={50} className="text-primary" />, number: '24/7', label: 'Available Support' }].map((stat, index) => (
+            <div key={index} className="col-6 col-md-3">
+              <div className="d-flex flex-column align-items-center">
+                {stat.icon}
+                <h2 className="fw-bold display-5 mt-2">{stat.number}</h2>
+                <p className="fs-5 text-muted">{stat.label}</p>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Services Section */}
-<div className="container py-5">
-  <h2 className="text-center fw-bold mb-4">Our Expertise</h2>
-  <div className="row g-4">
-    {[{ img: webDevelopmentImg, title: 'Bespoke Web Development', text: 'Crafting custom-built, cutting-edge websites that drive performance and meet your business goals.' },
-      { img: webDesigningImg, title: 'Innovative Web Design', text: 'Creating visually striking, intuitive designs that elevate user experience and brand identity.' },
-      { img: ecommerceDevelopmentImg, title: 'Next-Gen E-commerce Solutions', text: 'Designing seamless, secure, and scalable online stores to help you thrive in the digital marketplace.' }].map((service, index) => (
-        <div key={index} className="col-md-6 col-lg-4">
-          <div className="card shadow border-0 h-100">
-            <img src={service.img} className="card-img-top" alt={service.title} />
-            <div className="card-body text-center">
-              <h5 className="card-title fw-bold">{service.title}</h5>
-              <p className="card-text">{service.text}</p>
+      <div className="container py-5">
+        <h2 className="text-center fw-bold mb-4">Our Expertise</h2>
+        <div className="row g-4">
+          {[{ img: webDevelopmentImg, title: 'Bespoke Web Development', text: 'Crafting custom-built, cutting-edge websites that drive performance and meet your business goals.' },
+          { img: webDesigningImg, title: 'Innovative Web Design', text: 'Creating visually striking, intuitive designs that elevate user experience and brand identity.' },
+          { img: ecommerceDevelopmentImg, title: 'Next-Gen E-commerce Solutions', text: 'Designing seamless, secure, and scalable online stores to help you thrive in the digital marketplace.' }].map((service, index) => (
+            <div key={index} className="col-md-6 col-lg-4">
+              <div className="card shadow border-0 h-100">
+                <img src={service.img} className="card-img-top" alt={service.title} />
+                <div className="card-body text-center">
+                  <h5 className="card-title fw-bold">{service.title}</h5>
+                  <p className="card-text">{service.text}</p>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
-  </div>
-</div>
+      </div>
 
       {/* Our Team Section */}
       <div className="container py-5">
         <h2 className="text-center fw-bold mb-4">Meet Our Team</h2>
         <div className="row g-4 justify-content-center">
           {[{ img: shivamImage, name: 'Shivam Kumar', role: 'Full Stack Developer', bio: 'Shivam Kumar is a Full Stack Developer with expertise in requirement gathering, system analysis, and business solution implementation. Skilled in product management and ensuring quality control throughout project life cycles. Delivers innovative solutions on time, prioritizing customer satisfaction.', linkedin: 'https://www.linkedin.com/in/shivam-kumar-6801421ab/', gmail: 'shivamskr151@gmail.com' },
-            { img: nishantImage, name: 'Nishant Kumar', role: 'Web Developer', bio: 'Nishant Kumar is a skilled Web Developer with expertise in web application development, UI/UX design, and front-end technologies. Proficient in full-stack development, he optimizes web performance to enhance user experience. Delivers responsive, high-quality websites on time, ensuring client satisfaction.', linkedin: 'https://www.linkedin.com/in/nishant-kumar-8911262b2/', gmail: 'kumarnishantpradhan@gmail.com' }].map((teamMember, index) => (
-              <div key={index} className="col-md-6 col-lg-4">
-                <div className="card shadow-lg border-0 h-100 text-center p-3 rounded-3 team-card">
-                  <img src={teamMember.img} className="rounded-circle mx-auto d-block team-img" alt={teamMember.name} style={{ width: '120px', height: '120px', objectFit: 'cover' }} />
-                  <div className="card-body">
-                    <h5 className="card-title fw-bold mt-3">{teamMember.name}</h5>
-                    <p className="card-subtitle text-muted">{teamMember.role}</p>
-                    <p className="card-text small mt-2">{teamMember.bio}</p>
-                    <div className="d-flex justify-content-center gap-3 mt-3">
-                      <a href={teamMember.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2"><FaLinkedin size={20} /></a>
-                      <a href={`mailto:${teamMember.gmail}`} className="btn btn-outline-danger rounded-circle p-2"><FaEnvelope size={20} /></a>
-                    </div>
+          { img: nishantImage, name: 'Nishant Kumar', role: 'Web Developer', bio: 'Nishant Kumar is a skilled Web Developer with expertise in web application development, UI/UX design, and front-end technologies. Proficient in full-stack development, he optimizes web performance to enhance user experience. Delivers responsive, high-quality websites on time, ensuring client satisfaction.', linkedin: 'https://www.linkedin.com/in/nishant-kumar-8911262b2/', gmail: 'kumarnishantpradhan@gmail.com' }].map((teamMember, index) => (
+            <div key={index} className="col-md-6 col-lg-4">
+              <div className="card shadow-lg border-0 h-100 text-center p-3 rounded-3 team-card">
+                <img src={teamMember.img} className="rounded-circle mx-auto d-block team-img" alt={teamMember.name} style={{ width: '120px', height: '120px', objectFit: 'cover' }} />
+                <div className="card-body">
+                  <h5 className="card-title fw-bold mt-3">{teamMember.name}</h5>
+                  <p className="card-subtitle text-muted">{teamMember.role}</p>
+                  <p className="card-text small mt-2">{teamMember.bio}</p>
+                  <div className="d-flex justify-content-center gap-3 mt-3">
+                    <a href={teamMember.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary rounded-circle p-2"><FaLinkedin size={20} /></a>
+                    <a href={`mailto:${teamMember.gmail}`} className="btn btn-outline-danger rounded-circle p-2"><FaEnvelope size={20} /></a>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
       </div>
 
-{/* Call to Action */}
-<div
-  className="container-fluid py-5 position-relative"
-  style={{
-    background: "linear-gradient(to right, rgb(61, 92, 215), rgb(4, 45, 66))", // Darker gradient for more contrast
-    color: "#fff",
-  }}
->
-  <div className="container text-center">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      className="row justify-content-center align-items-center"
-    >
-      {/* Left Icons */}
-      <div className="col-lg-4 d-flex justify-content-center">
-        <div className="d-flex flex-column align-items-center gap-4">
+      {/* Call to Action */}
+      <div
+        className="container-fluid py-5 position-relative"
+        style={{
+          background: "linear-gradient(to right, rgb(61, 92, 215), rgb(4, 45, 66))", // Darker gradient for more contrast
+          color: "#fff",
+        }}
+      >
+        <div className="container text-center">
           <motion.div
-            animate={{ rotate: 360 }}
-            transition={{
-              repeat: Infinity,
-              duration: 3,
-              ease: "linear",
-            }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="row justify-content-center align-items-center"
           >
-            <FaReact size={70} className="text-light" />
-          </motion.div>
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{
-              repeat: Infinity,
-              duration: 3,
-              ease: "linear",
-              delay: 0.5,
-            }}
-          >
-            <FaNodeJs size={70} className="text-success" />
-          </motion.div>
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{
-              repeat: Infinity,
-              duration: 3,
-              ease: "linear",
-              delay: 1,
-            }}
-          >
-            <FaDatabase size={70} className="text-warning" />
+            {/* Left Icons */}
+            <div className="col-lg-4 d-flex justify-content-center">
+              <div className="d-flex flex-column align-items-center gap-4">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: "linear",
+                  }}
+                >
+                  <FaReact size={70} className="text-light" />
+                </motion.div>
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: "linear",
+                    delay: 0.5,
+                  }}
+                >
+                  <FaNodeJs size={70} className="text-success" />
+                </motion.div>
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: "linear",
+                    delay: 1,
+                  }}
+                >
+                  <FaDatabase size={70} className="text-warning" />
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Center Call to Action */}
+            <div className="col-lg-4">
+              <motion.div
+                initial={{ scale: 0.9 }}
+                whileHover={{ scale: 1 }}
+                className="p-5 rounded shadow-lg"
+                style={{
+                  background: "rgba(255, 255, 255, 0.2)",
+                  backdropFilter: "blur(12px)",
+                  borderRadius: "15px",
+                  boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)", // Shadow added for better pop
+                }}
+              >
+                <h2 className="fw-bold mb-4 text-uppercase">
+                  Empowering Your Business with Expert Solutions
+                </h2>
+                <p className="lead mb-4">
+                  At Wiz Freelancers, we are committed to transforming your ideas into innovative digital experiences. Let's build something amazing together!
+                </p>
+                <Link
+                  to="/contact"
+                  className="btn btn-light btn-lg rounded-pill shadow"
+                  style={{
+                    background: "linear-gradient(135deg, #f5af19, #ffc300)",
+                    border: "none",
+                  }}
+                >
+                  Let's Get Started
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right Icons */}
+            <div className="col-lg-4 d-flex justify-content-center">
+              <div className="d-flex flex-column align-items-center gap-4">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: "linear",
+                    delay: 1.5,
+                  }}
+                >
+                  <FaCode size={70} className="text-primary" />
+                </motion.div>
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: "linear",
+                    delay: 2,
+                  }}
+                >
+                  <FaLaptopCode size={70} className="text-danger" />
+                </motion.div>
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: "linear",
+                    delay: 2.5,
+                  }}
+                >
+                  <FaMobileAlt size={70} className="text-info" />
+                </motion.div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Center Call to Action */}
-      <div className="col-lg-4">
-        <motion.div
-          initial={{ scale: 0.9 }}
-          whileHover={{ scale: 1 }}
-          className="p-5 rounded shadow-lg"
-          style={{
-            background: "rgba(255, 255, 255, 0.2)",
-            backdropFilter: "blur(12px)",
-            borderRadius: "15px",
-            boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)", // Shadow added for better pop
-          }}
-        >
-          <h2 className="fw-bold mb-4 text-uppercase">
-            Empowering Your Business with Expert Solutions
-          </h2>
-          <p className="lead mb-4">
-            At Wiz Freelancers, we are committed to transforming your ideas into innovative digital experiences. Let's build something amazing together!
-          </p>
-          <Link
-            to="/contact"
-            className="btn btn-light btn-lg rounded-pill shadow"
-            style={{
-              background: "linear-gradient(135deg, #f5af19, #ffc300)",
-              border: "none",
-            }}
-          >
-            Let's Get Started
-          </Link>
-        </motion.div>
-      </div>
-
-      {/* Right Icons */}
-      <div className="col-lg-4 d-flex justify-content-center">
-        <div className="d-flex flex-column align-items-center gap-4">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{
-              repeat: Infinity,
-              duration: 3,
-              ease: "linear",
-              delay: 1.5,
-            }}
-          >
-            <FaCode size={70} className="text-primary" />
-          </motion.div>
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{
-              repeat: Infinity,
-              duration: 3,
-              ease: "linear",
-              delay: 2,
-            }}
-          >
-            <FaLaptopCode size={70} className="text-danger" />
-          </motion.div>
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{
-              repeat: Infinity,
-              duration: 3,
-              ease: "linear",
-              delay: 2.5,
-            }}
-          >
-            <FaMobileAlt size={70} className="text-info" />
-          </motion.div>
-        </div>
-      </div>
-    </motion.div>
-  </div>
-</div>
 
 
     </>
