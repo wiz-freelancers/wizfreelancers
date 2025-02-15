@@ -26,7 +26,7 @@ const App = () => {
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <Nav /> {/* Navigation bar */}
-        
+
         <div className="container my-4">
           <Routes>
             <Route path="/" element={<Home openModal={openModal} />} />
@@ -37,7 +37,7 @@ const App = () => {
         </div>
 
         <Footer /> {/* Fixed Footer */}
-        
+
         {/* Freelancer Registration Modal */}
         {showModal && (
           <div className="modal show d-block" tabIndex="-1" style={{ background: "rgba(0,0,0,0.5)" }}>
