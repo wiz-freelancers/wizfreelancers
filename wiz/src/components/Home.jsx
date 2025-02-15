@@ -13,7 +13,7 @@ import ecommerceDevelopmentImg from '../images/ecommerce-development.jpeg';
 import shivamImage from '../images/shivam-kumar.jpeg';
 import nishantImage from '../images/nishant-kumar.jpeg';
 import './Home.css';
-
+import { FaCheckCircle } from 'react-icons/fa';
 
 
 const Home = () => {
